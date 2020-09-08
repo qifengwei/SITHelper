@@ -24,5 +24,10 @@ namespace SITHelper
         {
             InitializeComponent();
         }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed) this.DragMove();
+        }
     }
 }
