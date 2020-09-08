@@ -121,6 +121,13 @@
         <!--//Back ground color//-->
         <Grid Background="Black">
             
+            <!--Background Color-->
+            <Grid x:Name="GridMain"
+                  Margin="65,0,0,0">
+                
+            </Grid>
+            
+            
             <!--Navigation Panel-->
             <Grid x:Name="nav_pnl"
                   HorizontalAlignment="Left"
@@ -168,7 +175,7 @@
                                       Height="30"
                                       Width="30"
                                       BorderThickness="0"
-                                      Style="{StaticResource tb_style}"
+                                      Style="{StaticResource tb_style}" Unchecked="tg_btn_Unchecked"
                                       >
                             <!--ToggleButton Background Image-->
                             <ToggleButton.Background>
@@ -187,11 +194,11 @@
 
                                         <Storyboard x:Name="HideStackPanel">
 
-                                            <DoubleAnimation Storyboard.TargetName="nav_pn"
+                                            <DoubleAnimation Storyboard.TargetName="nav_pnl"
                                                              Storyboard.TargetProperty="Width"
                                                              BeginTime="0:0:0"
                                                              From="230" To="65"
-                                                             Duration="0:0:2">
+                                                             Duration="0:0:0.2">
                                                 
                                             </DoubleAnimation>
                                             
@@ -207,11 +214,11 @@
 
                                         <Storyboard x:Name="ShowStackPanel">
 
-                                            <DoubleAnimation Storyboard.TargetName="nav_pn"
+                                            <DoubleAnimation Storyboard.TargetName="nav_pnl"
                                                              Storyboard.TargetProperty="Width"
                                                              BeginTime="0:0:0"
                                                              From="65" To="230"
-                                                             Duration="0:0:3">
+                                                             Duration="0:0:0.3">
 
                                             </DoubleAnimation>
 
@@ -232,12 +239,14 @@
                     <ListView x:Name="LV"
                               Background="Transparent"
                               BorderBrush="Transparent"
-                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="LV_SelectionChanged">
 
-                        <!--Home-->
+                        <!--Record-->
                         
                         <ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15">
+                                      Margin="0,0,0,15" 
+                                      MouseEnter="ListViewItem_MouseEnter"
+                                      x:Name="LVI_Record">
 
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
@@ -246,7 +255,7 @@
                                        Stretch="None"
                                        Margin="12,0,0,0"/>
 
-                                <TextBlock Text="Home"
+                                <TextBlock Text="Record"
                                            Margin="25,0,0,0"
                                            Style="{StaticResource font_style}"/>
 
@@ -256,14 +265,46 @@
 
                             <ListViewItem.ToolTip>
 
-                                <ToolTip x:Name="tt_home"
-                                         Content="Home"
+                                <ToolTip x:Name="tt_record"
+                                         Content="Record"
                                          Style="{StaticResource tt_style}"/>
-                                
+
                             </ListViewItem.ToolTip>
-                            
+
                         </ListViewItem>
-                        
+
+                        <!--Setting-->
+
+                        <ListViewItem HorizontalAlignment="Left"
+                                      Margin="0,0,0,15" 
+                                      MouseEnter="ListViewItem_MouseEnter"
+                                      x:Name="LVI_Setting">
+
+                            <StackPanel Orientation="Horizontal"
+                                        Width="230">
+
+                                <Image Source="E:\Git\qifengwei\SITHelper\SITHelper\Assets\tempIcon.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0"/>
+
+                                <TextBlock Text="Record"
+                                           Margin="25,0,0,0"
+                                           Style="{StaticResource font_style}"/>
+
+                            </StackPanel>
+
+                            <!--ToolTip-->
+
+                            <ListViewItem.ToolTip>
+
+                                <ToolTip x:Name="tt_setting"
+                                         Content="Setting"
+                                         Style="{StaticResource tt_style}"/>
+
+                            </ListViewItem.ToolTip>
+
+                        </ListViewItem>
+
                         <!--ListView Style Template-->
 
                         <ListView.ItemContainerStyle>
@@ -289,6 +330,28 @@
                                                                   VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
 
                                             </Border>
+
+                                            <ControlTemplate.Triggers>
+
+                                                <MultiTrigger>
+
+                                                    <MultiTrigger.Conditions>
+
+                                                        <Condition Property="IsMouseOver" Value="True"/>
+
+                                                    </MultiTrigger.Conditions>
+
+                                                    <Setter Property="Background"
+                                                            TargetName="Bd"
+                                                            Value="#404D5B"/>
+
+                                                    <Setter Property="BorderBrush"
+                                                            TargetName="Bd"
+                                                            Value="#404D5B"/>
+
+                                                </MultiTrigger>
+                                                
+                                            </ControlTemplate.Triggers>
                                             
                                         </ControlTemplate>
                                         
