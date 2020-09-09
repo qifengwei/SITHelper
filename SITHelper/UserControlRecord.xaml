@@ -6,9 +6,81 @@
              xmlns:local="clr-namespace:SITHelper"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="735"
-             Background="Green"
+             Background="#121212"
              >
+
+    <UserControl.Resources>
+        
+        <!--Title Style Template-->
+        <Style x:Key="RTB_Title_Style"
+               TargetType="RichTextBox">
+
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="#B4B4B4"/>
+            <Setter Property="FontFamily" Value="Microsoft YaHei UI"/>
+
+        </Style>
+        
+        <!--Content Style Template-->
+        <Style x:Key="RTB_Content_Style"
+               TargetType="RichTextBox">
+
+            <Setter Property="Background" Value="#121212"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="#B4B4B4"/>
+            <Setter Property="FontFamily" Value="Microsoft YaHei UI"/>
+
+        </Style>
+        
+    </UserControl.Resources>
+
     <Grid>
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="500" 
+                              />
+            <ColumnDefinition Width="235"
+                              />
+            
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="100"/>
+
+        </Grid.RowDefinitions>
+        
+        <!--Record regin-->
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0"
+                    >
+
+            <!--Title-->
+            <RichTextBox Margin="20"
+                         Height="36"
+                         x:Name="RTB_Title"
+                         Style="{StaticResource RTB_Title_Style}"
+                         Background="Black"
+                         BorderBrush="#222222"
+                         BorderThickness="3">
+                
+            </RichTextBox>
+            
+            <!--Content-->
+            <RichTextBox Margin="20, 0"
+                         Height="400"
+                         x:Name="RTB_Content"
+                         Style="{StaticResource RTB_Content_Style}">
+                
+            </RichTextBox>
+            
+            
+        </StackPanel>
             
     </Grid>
 </UserControl>

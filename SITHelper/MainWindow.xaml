@@ -10,7 +10,6 @@
         Width="800"
         ResizeMode="NoResize"
         Topmost="True"
-        MouseMove="Window_MouseMove"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         >
@@ -132,7 +131,8 @@
             <Grid x:Name="nav_pnl"
                   HorizontalAlignment="Left"
                   Width="65"
-                  Background="#2E333A"
+                  Background="#2E333A" 
+                  MouseMove="nav_pnl_MouseMove"                 
                   >
 
                 <StackPanel x:Name="st_pnl">

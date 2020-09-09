@@ -36,7 +36,13 @@ namespace SITHelper
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed) this.DragMove();
+            try
+            {
+                if (e.LeftButton == MouseButtonState.Pressed) this.DragMove();
+            }
+            catch
+            { }
+            
         }
 
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
@@ -69,6 +75,11 @@ namespace SITHelper
                     GridMain.Children.Add(uCSetting);
                     break;
             }
+        }
+
+        private void nav_pnl_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed) this.DragMove();
         }
     }
 }
