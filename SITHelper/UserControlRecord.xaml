@@ -20,6 +20,9 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Foreground" Value="#B4B4B4"/>
             <Setter Property="FontFamily" Value="Microsoft YaHei UI"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#222222"/>
+            <Setter Property="BorderThickness" Value="3"/>
 
         </Style>
         
@@ -33,6 +36,8 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="Foreground" Value="#B4B4B4"/>
             <Setter Property="FontFamily" Value="Microsoft YaHei UI"/>
+            <Setter Property="BorderBrush" Value="#222222"/>
+            <Setter Property="BorderThickness" Value="3"/>
 
         </Style>
         
@@ -64,10 +69,7 @@
             <RichTextBox Margin="20"
                          Height="36"
                          x:Name="RTB_Title"
-                         Style="{StaticResource RTB_Title_Style}"
-                         Background="Black"
-                         BorderBrush="#222222"
-                         BorderThickness="3">
+                         Style="{StaticResource RTB_Title_Style}">
                 
             </RichTextBox>
             
@@ -76,6 +78,11 @@
                          Height="400"
                          x:Name="RTB_Content"
                          Style="{StaticResource RTB_Content_Style}">
+                <RichTextBox.Document>
+                    <FlowDocument Focusable="True" LineHeight="1">
+
+                    </FlowDocument>
+                </RichTextBox.Document>
                 
             </RichTextBox>
             

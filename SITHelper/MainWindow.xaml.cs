@@ -51,10 +51,14 @@ namespace SITHelper
             if (tg_btn.IsChecked == true)
             {
                 tt_record.Visibility = Visibility.Collapsed;
+                tt_setting.Visibility = Visibility.Collapsed;
+                tt_close.Visibility = Visibility.Collapsed;
             }
             else 
             {
                 tt_record.Visibility = Visibility.Visible;
+                tt_setting.Visibility = Visibility.Visible;
+                tt_close.Visibility = Visibility.Visible;
             }
         }
 

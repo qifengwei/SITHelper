@@ -287,7 +287,7 @@
                                        Stretch="None"
                                        Margin="12,0,0,0"/>
 
-                                <TextBlock Text="Record"
+                                <TextBlock Text="Setting"
                                            Margin="25,0,0,0"
                                            Style="{StaticResource font_style}"/>
 
@@ -299,6 +299,39 @@
 
                                 <ToolTip x:Name="tt_setting"
                                          Content="Setting"
+                                         Style="{StaticResource tt_style}"/>
+
+                            </ListViewItem.ToolTip>
+
+                        </ListViewItem>
+                        
+                        
+                        <!--Close-->
+
+                        <ListViewItem HorizontalAlignment="Left"
+                                      Margin="0,250,0,15" 
+                                      MouseEnter="ListViewItem_MouseEnter"
+                                      x:Name="LVI_Close">
+
+                            <StackPanel Orientation="Horizontal"
+                                        Width="230">
+
+                                <Image Source="E:\Git\qifengwei\SITHelper\SITHelper\Assets\tempIcon.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0"/>
+
+                                <TextBlock Text="Close"
+                                           Margin="25,0,0,0"
+                                           Style="{StaticResource font_style}"/>
+
+                            </StackPanel>
+
+                            <!--ToolTip-->
+
+                            <ListViewItem.ToolTip>
+
+                                <ToolTip x:Name="tt_close"
+                                         Content="Close"
                                          Style="{StaticResource tt_style}"/>
 
                             </ListViewItem.ToolTip>
