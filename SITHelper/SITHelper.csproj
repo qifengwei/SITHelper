@@ -9,16 +9,20 @@
   <ItemGroup>
     <None Remove="Assets\close.png" />
     <None Remove="Assets\confirm.png" />
+    <None Remove="Assets\fixed.png" />
     <None Remove="Assets\history.png" />
     <None Remove="Assets\menu.png" />
     <None Remove="Assets\record.png" />
     <None Remove="Assets\refresh.png" />
     <None Remove="Assets\setting.png" />
+    <None Remove="Assets\unfixed.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Assets\close.png" />
     <Resource Include="Assets\confirm.png" />
+    <Resource Include="Assets\unfixed.png" />
+    <Resource Include="Assets\fixed.png" />
     <Resource Include="Assets\history.png" />
     <Resource Include="Assets\menu.png" />
     <Resource Include="Assets\record.png" />

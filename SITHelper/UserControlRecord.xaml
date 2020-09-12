@@ -150,6 +150,38 @@
             </Button>
             
         </StackPanel>
+
+        <Grid Grid.Row="0"
+              Grid.Column="1">
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="520"/>
+
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="35"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0"
+                  Grid.Column="1">
+
+                <Button x:Name="Bt_Fixed"
+                        Background="Transparent"
+                        BorderBrush="Transparent" Click="Bt_Fixed_Click">
+
+                    <Image Source="Assets/fixed.png"/>
+
+                </Button>
+                
+            </Grid>
             
+        </Grid>
+
     </Grid>
 </UserControl>
