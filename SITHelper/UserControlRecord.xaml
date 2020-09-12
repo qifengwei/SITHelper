@@ -41,6 +41,27 @@
 
         </Style>
         
+        <!--Button tooltips style-->
+        <Style x:Key="Bt_Tooltips"
+               TargetType="ToolTip">
+
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#B4B4B4"/>
+            <Setter Property="Placement" Value="Bottom"/>
+
+        </Style>
+        
+        <!--Button style-->
+        <Style x:Key="Bt_Style"
+               TargetType="Button">
+
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Margin" Value="10,10,20,10"/>
+
+        </Style>
+        
     </UserControl.Resources>
 
     <Grid>
@@ -56,7 +77,8 @@
         <Grid.RowDefinitions>
 
             <RowDefinition Height="500"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
 
         </Grid.RowDefinitions>
         
@@ -75,7 +97,7 @@
             
             <!--Content-->
             <RichTextBox Margin="20, 0"
-                         Height="400"
+                         Height="420"
                          x:Name="RTB_Content"
                          Style="{StaticResource RTB_Content_Style}">
                 <RichTextBox.Document>
@@ -86,6 +108,46 @@
                 
             </RichTextBox>
             
+            
+        </StackPanel>
+        
+        <!--button-->
+        <StackPanel Grid.Row="1"
+                    Grid.Column="0" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Center"
+                    >
+
+            <!--Refresh button-->
+            <Button x:Name="RefreshContents"
+                    Style="{StaticResource Bt_Style}">
+
+                <Image Source="Assets/refresh.png"/>
+
+                <Button.ToolTip>
+
+                    <ToolTip Style="{StaticResource Bt_Tooltips}"
+                             Content="Refresh Contents"/>
+                    
+                </Button.ToolTip>
+
+            </Button>
+            
+            <!--Confirm button-->
+            <Button x:Name="ConfirmContent"
+                    Style="{StaticResource Bt_Style}">
+                
+                <Image Source="Assets/confirm.png"/>
+
+                <Button.ToolTip>
+
+                    <ToolTip Style="{StaticResource Bt_Tooltips}"
+                             Content="Confirm Contents"/>
+                    
+                </Button.ToolTip>
+                
+            </Button>
             
         </StackPanel>
             

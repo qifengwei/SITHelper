@@ -22,6 +22,7 @@ namespace SITHelper
     {
         private UserControl uCRecord;
         private UserControl uCSetting;
+        private UserControl uCHistory;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace SITHelper
         {
             uCRecord = new UserControlRecord();
             uCSetting = new UserControlSetting();
+            uCHistory = new UserControlHistory();
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
@@ -53,12 +55,14 @@ namespace SITHelper
                 tt_record.Visibility = Visibility.Collapsed;
                 tt_setting.Visibility = Visibility.Collapsed;
                 tt_close.Visibility = Visibility.Collapsed;
+                tt_history.Visibility = Visibility.Collapsed;
             }
             else 
             {
                 tt_record.Visibility = Visibility.Visible;
                 tt_setting.Visibility = Visibility.Visible;
                 tt_close.Visibility = Visibility.Visible;
+                tt_history.Visibility = Visibility.Visible;
             }
         }
 
@@ -78,7 +82,18 @@ namespace SITHelper
                 case "LVI_Setting":
                     GridMain.Children.Add(uCSetting);
                     break;
+                case "LVI_History":
+                    GridMain.Children.Add(uCHistory);
+                    break;
+                case "LVI_Close":
+                    Exit();
+                    break;
             }
+        }
+
+        private void Exit()
+        {
+            this.Close();
         }
 
         private void nav_pnl_MouseMove(object sender, MouseEventArgs e)

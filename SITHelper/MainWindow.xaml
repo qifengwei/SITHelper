@@ -19,7 +19,7 @@
         <!--Toggle BUtton Style Template-->
 
         <ImageBrush x:Key="tb_mouse_over"
-                    ImageSource="E:\Git\qifengwei\SITHelper\SITHelper\Assets\tempIcon.png"/>
+                    ImageSource="Assets\menu.png"/>
         
         <!--Text Font Style-->
 
@@ -180,7 +180,7 @@
                             <!--ToggleButton Background Image-->
                             <ToggleButton.Background>
 
-                                <ImageBrush ImageSource="E:\Git\qifengwei\SITHelper\SITHelper\Assets\tempIcon.png"
+                                <ImageBrush ImageSource="Assets\menu.png"
                                             Stretch="None"/>
 
                             </ToggleButton.Background>
@@ -251,7 +251,7 @@
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
 
-                                <Image Source="E:\Git\qifengwei\SITHelper\SITHelper\Assets\tempIcon.png"
+                                <Image Source="Assets\record.png"
                                        Stretch="None"
                                        Margin="12,0,0,0"/>
 
@@ -273,6 +273,38 @@
 
                         </ListViewItem>
 
+                        <!--History-->
+
+                        <ListViewItem HorizontalAlignment="Left"
+                                      Margin="0,0,0,15" 
+                                      MouseEnter="ListViewItem_MouseEnter"
+                                      x:Name="LVI_History">
+
+                            <StackPanel Orientation="Horizontal"
+                                        Width="230">
+
+                                <Image Source="Assets\history.png"
+                                       Stretch="None"
+                                       Margin="12,0,0,0"/>
+
+                                <TextBlock Text="History"
+                                           Margin="19,0,0,0"
+                                           Style="{StaticResource font_style}"/>
+
+                            </StackPanel>
+
+                            <!--ToolTip-->
+
+                            <ListViewItem.ToolTip>
+
+                                <ToolTip x:Name="tt_history"
+                                         Content="History"
+                                         Style="{StaticResource tt_style}"/>
+
+                            </ListViewItem.ToolTip>
+
+                        </ListViewItem>
+
                         <!--Setting-->
 
                         <ListViewItem HorizontalAlignment="Left"
@@ -283,11 +315,11 @@
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
 
-                                <Image Source="E:\Git\qifengwei\SITHelper\SITHelper\Assets\tempIcon.png"
+                                <Image Source="Assets\setting.png"
                                        Stretch="None"
                                        Margin="12,0,0,0"/>
 
-                                <TextBlock Text="Setting"
+                                <TextBlock Text="Settings"
                                            Margin="25,0,0,0"
                                            Style="{StaticResource font_style}"/>
 
@@ -298,7 +330,7 @@
                             <ListViewItem.ToolTip>
 
                                 <ToolTip x:Name="tt_setting"
-                                         Content="Setting"
+                                         Content="Settings"
                                          Style="{StaticResource tt_style}"/>
 
                             </ListViewItem.ToolTip>
@@ -316,11 +348,11 @@
                             <StackPanel Orientation="Horizontal"
                                         Width="230">
 
-                                <Image Source="E:\Git\qifengwei\SITHelper\SITHelper\Assets\tempIcon.png"
+                                <Image Source="Assets\close.png"
                                        Stretch="None"
                                        Margin="12,0,0,0"/>
 
-                                <TextBlock Text="Close"
+                                <TextBlock Text="Exit"
                                            Margin="25,0,0,0"
                                            Style="{StaticResource font_style}"/>
 
@@ -331,7 +363,7 @@
                             <ListViewItem.ToolTip>
 
                                 <ToolTip x:Name="tt_close"
-                                         Content="Close"
+                                         Content="Exit"
                                          Style="{StaticResource tt_style}"/>
 
                             </ListViewItem.ToolTip>
