@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,25 +22,6 @@ namespace SITHelper
         public UserControlRecord()
         {
             InitializeComponent();
-        }
-
-        private void Bt_Fixed_Click(object sender, RoutedEventArgs e)
-        {
-            var window = this.Parent as MainWindow;
-            var brush = new ImageBrush();
-            if (window.Topmost == true)
-            {
-                window.Topmost = false;
-                brush.ImageSource = new BitmapImage(new Uri("Assets\\unfixed.png"));
-                Bt_Fixed.Background = brush;
-            }
-            else 
-            {
-                window.Topmost = true;
-                brush.ImageSource = new BitmapImage(new Uri("Assets\\fixed.png"));
-                Bt_Fixed.Background = brush;
-            }
-            
         }
     }
 }

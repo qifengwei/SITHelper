@@ -75,7 +75,7 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 Background="{TemplateBinding Background}"
                                 SnapsToDevicePixels="True">
-                            
+
                         </Border>
 
                         <ControlTemplate.Triggers>
@@ -105,11 +105,11 @@
                             </Trigger>
 
                         </ControlTemplate.Triggers>
-                        
+
                     </ControlTemplate>
-                    
+
                 </Setter.Value>
-                
+
             </Setter>
 
         </Style>
