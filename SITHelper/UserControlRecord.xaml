@@ -63,7 +63,7 @@
         </Style>
 
         <!--RadioButton Fixed Style-->
-        <Style x:Key="CB_Fixed_Style" 
+        <!--<Style x:Key="CB_Fixed_Style" 
                TargetType="CheckBox">
 
             <Setter Property="Template">
@@ -111,6 +111,61 @@
                 </Setter.Value>
 
             </Setter>
+
+        </Style>-->
+
+        <Style x:Key="CB_Fixed_Style" 
+               TargetType="CheckBox">
+            
+            <Style.Triggers>
+
+                <Trigger Property="IsChecked" Value="True">
+
+                    <Setter Property="Template">
+
+                        <Setter.Value>
+
+                            <ControlTemplate TargetType="CheckBox">
+
+                                <Grid Background="Transparent"
+                                      Margin="7">
+
+                                    <Image Source="Assets/fixed.png"/>
+
+                                </Grid>
+                                
+                            </ControlTemplate>
+                            
+                        </Setter.Value>
+                        
+                    </Setter>
+                    
+                </Trigger>
+
+                <Trigger Property="IsChecked" Value="False">
+
+                    <Setter Property="Template">
+
+                        <Setter.Value>
+
+                            <ControlTemplate TargetType="CheckBox">
+
+                                <Grid Background="Transparent"
+                                      Margin="7">
+
+                                    <Image Source="Assets/unfixed.png"/>
+
+                                </Grid>
+
+                            </ControlTemplate>
+
+                        </Setter.Value>
+
+                    </Setter>
+
+                </Trigger>
+
+            </Style.Triggers>
 
         </Style>
 
@@ -224,7 +279,16 @@
                   Grid.Column="1">
 
                 <CheckBox Margin="0" 
-                             Style="{StaticResource CB_Fixed_Style}">
+                             Style="{StaticResource CB_Fixed_Style}"
+                          x:Name="CB_Fixed" Checked="CB_Fixed_Checked">
+                    
+                    <CheckBox.ToolTip>
+
+                        <ToolTip Content="Switch Fixed State"
+                                 Style="{StaticResource Bt_Tooltips}"
+                                 Placement="Left"/>
+
+                    </CheckBox.ToolTip>
 
                 </CheckBox>
 

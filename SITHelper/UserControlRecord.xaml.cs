@@ -23,5 +23,19 @@ namespace SITHelper
         {
             InitializeComponent();
         }
+
+        private void CB_Fixed_Checked(object sender, RoutedEventArgs e)
+        {
+            IsTopMost(CB_Fixed.IsChecked??false);
+        }
+
+        private void IsTopMost(bool state)
+        {
+            var grid1 = this.Parent as Grid;
+            var grid2 = grid1.Parent as Grid;
+            var grid3 = grid2.Parent as Grid;
+            var window = grid3.Parent as MainWindow;
+            window.Topmost = state;
+        }
     }
 }
