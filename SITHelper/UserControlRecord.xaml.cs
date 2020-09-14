@@ -24,12 +24,14 @@ namespace SITHelper
             InitializeComponent();
         }
 
-        private void CB_Fixed_Checked(object sender, RoutedEventArgs e)
-        {
-            IsTopMost(CB_Fixed.IsChecked??false);
-        }
+        private void CB_Fixed_Click(object sender, RoutedEventArgs e) => SetTopMost(CB_Fixed.IsChecked ?? false);
 
-        private void IsTopMost(bool state)
+        #region function
+        /// <summary>
+        /// 设置window置顶状态
+        /// </summary>
+        /// <param name="state">是否置顶</param>
+        private void SetTopMost(bool state)
         {
             var grid1 = this.Parent as Grid;
             var grid2 = grid1.Parent as Grid;
@@ -37,5 +39,7 @@ namespace SITHelper
             var window = grid3.Parent as MainWindow;
             window.Topmost = state;
         }
+
+        #endregion
     }
 }

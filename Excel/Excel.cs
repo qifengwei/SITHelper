@@ -2,7 +2,8 @@
 
 namespace Excel
 {
-    public class Excel
+    public class Excel:IExcel
     {
+        private static Excel instance
     }
 }

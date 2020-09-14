@@ -280,7 +280,7 @@
 
                 <CheckBox Margin="0" 
                              Style="{StaticResource CB_Fixed_Style}"
-                          x:Name="CB_Fixed" Checked="CB_Fixed_Checked">
+                          x:Name="CB_Fixed" Click="CB_Fixed_Click">
                     
                     <CheckBox.ToolTip>
 
