@@ -25,6 +25,7 @@ namespace SITHelper
         private UserControl uCHistory;
         public MainWindow()
         {
+            CallSetPathWindow();
             InitializeComponent();
             InitUserRecord();
         }
@@ -34,6 +35,12 @@ namespace SITHelper
             uCRecord = new UserControlRecord();
             uCSetting = new UserControlSetting();
             uCHistory = new UserControlHistory();
+        }
+
+        private void CallSetPathWindow()
+        {
+            SetPathWindow setPathWindow = new SetPathWindow();
+            setPathWindow.ShowDialog();
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e)

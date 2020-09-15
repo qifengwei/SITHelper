@@ -11,9 +11,9 @@ namespace Excel
             switch (excelType.ToLower())
             {
                 case "original":
-                    return new Excel();
+                    return OriExcel.GetExcel();
                 default:
-                    return new Excel();
+                    return OriExcel.GetExcel();
             }
         }
     }
