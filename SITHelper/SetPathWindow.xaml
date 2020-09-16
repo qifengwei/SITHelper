@@ -5,11 +5,82 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SITHelper"
         mc:Ignorable="d"
-        Title="Set Work Path" Height="300" Width="400"
-        WindowStartupLocation="CenterScreen">
+        Title="Set Work Path" Height="200" Width="400"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+
+    <Window.Resources>
+
+        <!--Label Style-->
+        <Style x:Key="L_Name"
+               TargetType="Label">
+
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+
+        </Style>
+
+    </Window.Resources>
+
     <Grid>
-        <Button Click="Button_Click" >xuan</Button>
-        
-        
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="5*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               Style="{StaticResource L_Name}"
+               Content="Work Path" HorizontalAlignment="Left" Margin="6,0,0,0"/>
+
+        <Label Grid.Row="2"
+               Grid.Column="0"
+               Style="{StaticResource L_Name}"
+               Content="Excel Path" HorizontalAlignment="Left" Margin="8,0,0,0"/>
+
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 x:Name="TB_Work_Path"
+                 Margin="5,10,5,10" Grid.ColumnSpan="2"/>
+
+        <TextBox Grid.Row="2"
+                 Grid.Column="1"
+                 x:Name="TB_Excel_Path"
+                 Margin="5,10,5,10" Grid.ColumnSpan="2"/>
+
+        <Button x:Name="Bt_OpenFileDlg"
+                Grid.Column="3"
+                Grid.Row="2"
+                Margin="8,8,8,8"
+                Content="Select File" Click="Bt_OpenFileDlg_Click"/>
+
+        <Button x:Name="Bt_Apply"
+                Grid.Column="2"
+                Grid.Row="3"
+                Margin="120,10,10,10"
+                Content="Apply" Click="Bt_Apply_Click"/>
+
+        <Button x:Name="Bt_Close"
+                Grid.Column="3"
+                Grid.Row="3"
+                Margin="10"
+                Content="Exit" Click="Bt_Close_Click"/>
+
     </Grid>
 </Window>

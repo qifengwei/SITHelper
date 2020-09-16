@@ -71,4 +71,8 @@
     <Folder Include="Language\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Excel\Excel.csproj" />
+  </ItemGroup>
+
 </Project>

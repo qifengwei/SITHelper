@@ -6,7 +6,7 @@ namespace Excel
 {
     public class ExcelFactory
     {
-        public IExcel GetExcel(string excelType)
+        public static IExcel GetExcel(string excelType="original")
         {
             switch (excelType.ToLower())
             {

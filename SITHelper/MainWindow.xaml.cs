@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace SITHelper
         private UserControl uCRecord;
         private UserControl uCSetting;
         private UserControl uCHistory;
+        public static String WorkPath;
         public MainWindow()
         {
             CallSetPathWindow();

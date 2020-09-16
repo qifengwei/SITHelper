@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Excel;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,12 +22,41 @@ namespace SITHelper
         public SetPathWindow()
         {
             InitializeComponent();
+            Init();
+        }
+
+        private void Init()
+        {
+      
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.ShowDialog();
+        }
+
+        private void Bt_OpenFileDlg_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "Microsoft Excel 工作表|*.xlsx;*.xls";
+            Nullable<bool> result = fileDialog.ShowDialog();
+            if (result == true)
+            {
+                TB_Excel_Path.Text = fileDialog.FileName;
+            }
+        }
+
+        private void Bt_Close_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void Bt_Apply_Click(object sender, RoutedEventArgs e)
+        {
+            IExcel excel = ExcelFactory.GetExcel();
+            excel.OpenExcel();
+            this.Close();
         }
     }
 }
