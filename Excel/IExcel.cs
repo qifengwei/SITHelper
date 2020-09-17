@@ -8,8 +8,28 @@ namespace Excel
     {
         public void OpenExcel();
 
-        public void CreateNewExcel();
+        public void OpenExcel(string path);
 
-        public void WriteContent();
+        public void CreateExcel(string path);
+
+        public void CreateNewExcel();       
+
+        public void WriteContent(int row, int col, string content);
+
+        public void WriteContentNextVacantRow(string content);
+
+        public void WriteContentNextVacantRow(int col, string content);
+
+        public void WriteContentNextVacantRow(Dictionary<int, string> content);
+
+        public void SaveFile();
+
+        public void SaveAs(string path);
+
+        public void CloseWithSave();
+
+        public void CloseWithSaveAs();
+
+        public void CloseWithoutSave();
     }
 }

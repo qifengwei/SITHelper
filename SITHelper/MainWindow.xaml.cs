@@ -102,6 +102,7 @@ namespace SITHelper
 
         private void Exit()
         {
+            Excel.ExcelFactory.GetExcel().CloseWithSave();
             this.Close();
         }
 

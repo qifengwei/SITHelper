@@ -41,5 +41,13 @@ namespace SITHelper
         }
 
         #endregion
+
+        private void ConfirmContent_Click(object sender, RoutedEventArgs e)
+        {
+            var instance = Excel.ExcelFactory.GetExcel();
+            TextRange text = new TextRange(RTB_Content.Document.ContentStart, RTB_Content.Document.ContentEnd);
+            instance.WriteContentNextVacantRow(3, text.Text);
+            instance.SaveFile();
+        }
     }
 }

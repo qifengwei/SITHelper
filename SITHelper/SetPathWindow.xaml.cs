@@ -55,7 +55,14 @@ namespace SITHelper
         private void Bt_Apply_Click(object sender, RoutedEventArgs e)
         {
             IExcel excel = ExcelFactory.GetExcel();
-            excel.OpenExcel();
+            if (!System.IO.File.Exists(TB_Excel_Path.Text))
+            {
+                excel.CreateExcel(TB_Excel_Path.Text);
+            }
+            else
+            {
+                excel.OpenExcel(TB_Excel_Path.Text);
+            }    
             this.Close();
         }
     }

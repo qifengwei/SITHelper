@@ -243,7 +243,7 @@
             
             <!--Confirm button-->
             <Button x:Name="ConfirmContent"
-                    Style="{StaticResource Bt_Style}">
+                    Style="{StaticResource Bt_Style}" Click="ConfirmContent_Click">
                 
                 <Image Source="Assets/confirm.png"/>
 
