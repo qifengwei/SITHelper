@@ -51,8 +51,8 @@ namespace SITHelper
         {
             if (System.IO.File.Exists(TB_Excel_Path.Text))
             {
-                //打开原有文件(IExcel.GetPath())
-                throw new NotImplementedException();
+                var instance = ExcelFactory.GetExcel();
+                instance.GetPath(TB_Excel_Path.Text);
             }
             else 
             {
@@ -62,12 +62,9 @@ namespace SITHelper
                     return;
                 }
                 try
-                {
-                    using (FileStream fs = File.Create(TB_Excel_Path.Text))
-                    {
-                    }
-                    //打开原有文件(IExcel.GetPath())
-                    throw new NotImplementedException();
+                {                  
+                    var instance = ExcelFactory.GetExcel();
+                    instance.GetPath(TB_Excel_Path.Text);
                 }
                 catch (DirectoryNotFoundException err)
                 {

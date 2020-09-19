@@ -259,7 +259,7 @@
 
             <!--Refresh button-->
             <Button x:Name="RefreshContents"
-                    Style="{StaticResource Bt_Style}">
+                    Style="{StaticResource Bt_Style}" Click="RefreshContents_Click">
 
                 <Image Source="Assets/refresh.png"/>
 

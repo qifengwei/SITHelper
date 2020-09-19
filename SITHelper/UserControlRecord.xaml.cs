@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -43,6 +44,10 @@ namespace SITHelper
         #endregion
 
         #region Submit Code
+        private void RefreshContents_Click(object sender, RoutedEventArgs e)
+        {
+            ResetTitleContent();
+        }
         private void ConfirmContent_Click(object sender, RoutedEventArgs e)
         {
             RecordInExcel();
@@ -50,8 +55,27 @@ namespace SITHelper
 
         private void RecordInExcel()
         {
-            if(TextChange(RTB_Content.Document.ContentStart, RTB_Content.Document.ContentEnd))   
+            //if (new TextRange(RTB_Content.Document.ContentStart, RTB_Content.Document.ContentEnd).Text.Length==0) MessageBox.Show("neirongkong");
+            //if (new TextRange(RTB_Title.Document.ContentStart, RTB_Title.Document.ContentEnd).Text.Length == 0) MessageBox.Show("biaotikong");
+            if (new TextRange(RTB_Content.Document.ContentStart, RTB_Content.Document.ContentEnd).Text.Trim().Length != 0 &&
+                new TextRange(RTB_Title.Document.ContentStart, RTB_Title.Document.ContentEnd).Text.Trim().Length != 0)
+            {
+                //bool IExcel.WriteInNextVacantRow(int ColumnTitle, int ColumnContents)
+                ResetTitleContent();
+            }
+            else 
+            {
+                MessageBox.Show("Title or Content is Empty");
+            }
+        }
+
+        private void ResetTitleContent()
+        {
+            RTB_Content.Document = new FlowDocument();
+            RTB_Title.Document = new FlowDocument();
         }
         #endregion
+
+
     }
 }
