@@ -30,12 +30,6 @@ namespace SITHelper
       
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.ShowDialog();
-        }
-
         private void Bt_OpenFileDlg_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
@@ -54,16 +48,26 @@ namespace SITHelper
 
         private void Bt_Apply_Click(object sender, RoutedEventArgs e)
         {
-            IExcel excel = ExcelFactory.GetExcel();
             if (!System.IO.File.Exists(TB_Excel_Path.Text))
             {
-                excel.CreateExcel(TB_Excel_Path.Text);
+                //打开原有文件
+            }
+            else if (1==1)
+            {
+                
             }
             else
             {
-                excel.OpenExcel(TB_Excel_Path.Text);
-            }    
+                TB_Excel_Path.Text = "";
+                return;
+            }
             this.Close();
+        }
+
+        private void TB_Excel_Path_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //TB_Work_Path.Text = TB_Excel_Path.Text;
+            TB_Work_Path.Text = System.IO.Path.GetDirectoryName(TB_Excel_Path.Text);
         }
     }
 }

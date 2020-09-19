@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SITHelper.Configuration;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,9 +22,15 @@ namespace SITHelper
     /// </summary>
     public partial class MainWindow : Window
     {
+        //UserControl
         private UserControl uCRecord;
         private UserControl uCSetting;
         private UserControl uCHistory;
+
+
+        //Configuration
+        public static ConfigExcelFormat config;
+
         public static String WorkPath;
         public MainWindow()
         {
@@ -37,6 +44,16 @@ namespace SITHelper
             uCRecord = new UserControlRecord();
             uCSetting = new UserControlSetting();
             uCHistory = new UserControlHistory();
+        }
+
+        private void InitConfiguration()
+        {
+#if DEBUG
+            //temp
+            config.TitleColumn = 2;
+            config.ContentColumn = 3;
+#endif
+
         }
 
         private void CallSetPathWindow()
@@ -102,7 +119,6 @@ namespace SITHelper
 
         private void Exit()
         {
-            Excel.ExcelFactory.GetExcel().CloseWithSave();
             this.Close();
         }
 

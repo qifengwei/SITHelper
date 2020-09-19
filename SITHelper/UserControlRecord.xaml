@@ -51,7 +51,18 @@
             <Setter Property="Placement" Value="Bottom"/>
 
         </Style>
-        
+
+        <!--RichTextBox tooltips style-->
+        <Style x:Key="RTB_Tooltips"
+               TargetType="ToolTip">
+
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#EEEEEE"/>
+            <Setter Property="Placement" Value="Bottom"/>
+
+        </Style>
+
         <!--Button style-->
         <Style x:Key="Bt_Style"
                TargetType="Button">
@@ -199,6 +210,16 @@
                          Height="36"
                          x:Name="RTB_Title"
                          Style="{StaticResource RTB_Title_Style}">
+
+                <RichTextBox.ToolTip>
+
+                    <ToolTip Style="{StaticResource RTB_Tooltips}">
+                        
+                        Title will be writen in column
+                        
+                    </ToolTip>
+                    
+                </RichTextBox.ToolTip>
                 
             </RichTextBox>
             
@@ -212,7 +233,17 @@
 
                     </FlowDocument>
                 </RichTextBox.Document>
-                
+
+                <RichTextBox.ToolTip>
+
+                    <ToolTip Style="{StaticResource RTB_Tooltips}">
+
+                        Content will be writen in column
+
+                    </ToolTip>
+
+                </RichTextBox.ToolTip>
+
             </RichTextBox>
             
             

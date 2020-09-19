@@ -47,26 +47,31 @@
         <Label Grid.Row="1"
                Grid.Column="0"
                Style="{StaticResource L_Name}"
-               Content="Work Path" HorizontalAlignment="Left" Margin="6,0,0,0"/>
-
+               Content="Excel Path" HorizontalAlignment="Left" Margin="6,0,0,0"/>
+        
         <Label Grid.Row="2"
                Grid.Column="0"
                Style="{StaticResource L_Name}"
-               Content="Excel Path" HorizontalAlignment="Left" Margin="8,0,0,0"/>
+               Content="Work Path" HorizontalAlignment="Left" Margin="4,0,0,0"/>
+
 
         <TextBox Grid.Row="1"
                  Grid.Column="1"
-                 x:Name="TB_Work_Path"
-                 Margin="5,10,5,10" Grid.ColumnSpan="2"/>
+                 x:Name="TB_Excel_Path"
+                 Margin="5,10,5,10" 
+                 Grid.ColumnSpan="2" TextChanged="TB_Excel_Path_TextChanged"/>
 
         <TextBox Grid.Row="2"
                  Grid.Column="1"
-                 x:Name="TB_Excel_Path"
-                 Margin="5,10,5,10" Grid.ColumnSpan="2"/>
+                 x:Name="TB_Work_Path"
+                 Margin="5,10,5,10" 
+                 Grid.ColumnSpan="2"
+                 IsEnabled="False"/>
+
 
         <Button x:Name="Bt_OpenFileDlg"
                 Grid.Column="3"
-                Grid.Row="2"
+                Grid.Row="1"
                 Margin="8,8,8,8"
                 Content="Select File" Click="Bt_OpenFileDlg_Click"/>
 
