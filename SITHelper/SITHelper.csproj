@@ -15,6 +15,7 @@
     <None Remove="Assets\confirm.png" />
     <None Remove="Assets\fixed.png" />
     <None Remove="Assets\history.png" />
+    <None Remove="Assets\mainbackground.png" />
     <None Remove="Assets\menu.png" />
     <None Remove="Assets\record.png" />
     <None Remove="Assets\refresh.png" />
@@ -29,6 +30,7 @@
     <Resource Include="Assets\confirm.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\mainbackground.png" />
     <Resource Include="Assets\unfixed.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

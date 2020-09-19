@@ -69,5 +69,10 @@ namespace SITHelper
             //TB_Work_Path.Text = TB_Excel_Path.Text;
             TB_Work_Path.Text = System.IO.Path.GetDirectoryName(TB_Excel_Path.Text);
         }
+
+        private void TB_Excel_Path_LostFocus(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("show");
+        }
     }
 }

@@ -122,7 +122,9 @@
             <!--Background Color-->
             <Grid x:Name="GridMain"
                   Margin="65,0,0,0">
-                
+
+                <Image Source="Assets\mainbackground.png"/>
+
             </Grid>
             
             
