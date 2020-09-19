@@ -42,9 +42,16 @@ namespace SITHelper
 
         #endregion
 
+        #region Submit Code
         private void ConfirmContent_Click(object sender, RoutedEventArgs e)
         {
-
+            RecordInExcel();
         }
+
+        private void RecordInExcel()
+        {
+            if(TextChange(RTB_Content.Document.ContentStart, RTB_Content.Document.ContentEnd))   
+        }
+        #endregion
     }
 }

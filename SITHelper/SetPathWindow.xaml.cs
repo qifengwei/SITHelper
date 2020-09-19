@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -48,18 +49,41 @@ namespace SITHelper
 
         private void Bt_Apply_Click(object sender, RoutedEventArgs e)
         {
-            if (!System.IO.File.Exists(TB_Excel_Path.Text))
+            if (System.IO.File.Exists(TB_Excel_Path.Text))
             {
-                //打开原有文件
+                //打开原有文件(IExcel.GetPath())
+                throw new NotImplementedException();
             }
-            else if (1==1)
+            else 
             {
-                
-            }
-            else
-            {
-                TB_Excel_Path.Text = "";
-                return;
+                if (!(System.IO.Path.GetExtension(TB_Excel_Path.Text) == ".xlsx"))
+                {
+                    MessageBox.Show("The file path is not a valid Excel file");
+                    return;
+                }
+                try
+                {
+                    using (FileStream fs = File.Create(TB_Excel_Path.Text))
+                    {
+                    }
+                    //打开原有文件(IExcel.GetPath())
+                    throw new NotImplementedException();
+                }
+                catch (DirectoryNotFoundException err)
+                {
+                    MessageBox.Show($"Can't create excel at {TB_Excel_Path.Text}, {err.Message}");
+                    return;
+                }
+                catch (NotSupportedException err)
+                {
+                    MessageBox.Show($"The format for path is invalid, {err.Message}");
+                    return;
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show($"{err.Message}");
+                    return;
+                }
             }
             this.Close();
         }
