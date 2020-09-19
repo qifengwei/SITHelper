@@ -27,16 +27,13 @@ namespace SITHelper
         private UserControl uCSetting;
         private UserControl uCHistory;
 
-
-        //Configuration
-        public static ConfigExcelFormat config;
-
         public static String WorkPath;
         public MainWindow()
         {
             CallSetPathWindow();
             InitializeComponent();
             InitUserRecord();
+            InitConfiguration();
         }
 
         private void InitUserRecord()
@@ -50,8 +47,8 @@ namespace SITHelper
         {
 #if DEBUG
             //temp
-            config.TitleColumn = 2;
-            config.ContentColumn = 3;
+            ConfigExcelFormat.TitleColumn = 2;
+            ConfigExcelFormat.ContentColumn = 3;
 #endif
 
         }

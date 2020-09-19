@@ -5,10 +5,10 @@ using System.Text;
 namespace SITHelper.Configuration
 {
     [Serializable]
-    public class ConfigExcelFormat
+    public static class ConfigExcelFormat
     {
-        public int TitleColumn { get; set; }
+        public static int TitleColumn { get; set; }
 
-        public int ContentColumn { get; set; }
+        public static int ContentColumn { get; set; }
     }
 }

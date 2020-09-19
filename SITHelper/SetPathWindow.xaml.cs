@@ -51,6 +51,15 @@ namespace SITHelper
         {
             if (System.IO.File.Exists(TB_Excel_Path.Text))
             {
+                try
+                {
+                    using (FileStream fs = File.OpenRead(TB_Excel_Path.Text)) { }
+                }
+                catch (IOException)
+                {
+                    MessageBox.Show("The file is opened by another application");
+                    return;
+                }
                 var instance = ExcelFactory.GetExcel();
                 instance.GetPath(TB_Excel_Path.Text);
             }

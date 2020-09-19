@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SITHelper.Configuration;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -60,7 +61,10 @@ namespace SITHelper
             if (new TextRange(RTB_Content.Document.ContentStart, RTB_Content.Document.ContentEnd).Text.Trim().Length != 0 &&
                 new TextRange(RTB_Title.Document.ContentStart, RTB_Title.Document.ContentEnd).Text.Trim().Length != 0)
             {
-                //bool IExcel.WriteInNextVacantRow(int ColumnTitle, int ColumnContents)
+                string titleText = new TextRange(RTB_Title.Document.ContentStart, RTB_Title.Document.ContentEnd).Text;
+                string contentText = new TextRange(RTB_Content.Document.ContentStart, RTB_Content.Document.ContentEnd).Text;
+                var instance = Excel.ExcelFactory.GetExcel();
+                instance.WriteInNextVacantRow(ConfigExcelFormat.TitleColumn, ConfigExcelFormat.ContentColumn, titleText, contentText) ;
                 ResetTitleContent();
             }
             else 

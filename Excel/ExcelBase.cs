@@ -40,21 +40,53 @@ namespace Excel
         private void CreateTable()
         {
             IWorkbook workbook;
-            using (var stream = File.OpenRead(excelPath))
+            using (var stream = new FileStream(excelPath, FileMode.Open, FileAccess.Read))
             {
-                workbook = new XSSFWorkbook(stream);
+                workbook = WorkbookFactory.Create(excelPath);
                 if (workbook.GetSheet("问题列表") == null)
                 {
-                    workbook.CreateSheet("问题列表");
+                    ISheet sheet = workbook.CreateSheet("问题列表");
                 }
             }
+
             SaveExcel(workbook);
 
         }
 
         public bool WriteInNextVacantRow(int ColumnTitle, int ColumnContents, string Title, string Contents)
         {
-            throw new NotImplementedException();
+            IWorkbook workbook = OpenWB();
+            WriteInNPOINextVacantRow(ColumnTitle, ColumnContents, Title, Contents, ref workbook);
+            SaveExcel(workbook);
+            return true;
+
+        }
+
+        private void WriteInNPOINextVacantRow(int ColumnTitle, int ColumnContents, string Title, string Contents, ref IWorkbook wb)
+        {
+            ISheet sheet = wb.GetSheet("问题列表");
+            sheet.SetColumnWidth(ColumnTitle, 25 * 256);
+            sheet.SetColumnWidth(ColumnContents, 50 * 256);
+            int rowNum = sheet.LastRowNum + 1;
+            IRow row = sheet.CreateRow(rowNum);
+            ICell cellTitle = row.CreateCell(ColumnTitle);
+            ICell cellContent = row.CreateCell(ColumnContents);
+
+            ICellStyle cellStyle = wb.CreateCellStyle();
+            cellStyle.WrapText = true;
+            cellTitle.CellStyle = cellStyle;
+            cellContent.CellStyle = cellStyle;
+
+            cellTitle.SetCellValue(Title.Trim());
+            cellContent.SetCellValue(Contents.Trim());
+        }
+
+        private IWorkbook OpenWB()
+        {
+            using (var stream = new FileStream(excelPath, FileMode.Open, FileAccess.Read))
+            {
+                return WorkbookFactory.Create(excelPath);
+            }
         }
 
         private void SaveExcel(IWorkbook wb)
