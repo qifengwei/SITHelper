@@ -24,6 +24,12 @@ namespace SITHelper
         public UserControlRecord()
         {
             InitializeComponent();
+            UserInit();
+        }
+
+        private void UserInit()
+        {
+            ResetTitleContent();
         }
 
         private void CB_Fixed_Click(object sender, RoutedEventArgs e) => SetTopMost(CB_Fixed.IsChecked ?? false);
@@ -75,8 +81,12 @@ namespace SITHelper
 
         private void ResetTitleContent()
         {
-            RTB_Content.Document = new FlowDocument();
             RTB_Title.Document = new FlowDocument();
+            RTB_Content.Document = new FlowDocument();
+            //RTB_Title.Document = Tools.Tools.DeepCopy<FlowDocument>(ConfigContentFormat.TitleInitDocument);
+            //RTB_Content.Document = Tools.Tools.DeepCopy<FlowDocument>(ConfigContentFormat.ContentInitDocument);
+            RTB_Title.Document = ConfigContentFormatStatic.TitleInitDocument;
+            RTB_Content.Document = ConfigContentFormatStatic.ContentInitDocument;
         }
         #endregion
 
