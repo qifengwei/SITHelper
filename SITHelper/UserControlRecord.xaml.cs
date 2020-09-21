@@ -81,12 +81,29 @@ namespace SITHelper
 
         private void ResetTitleContent()
         {
-            RTB_Title.Document = new FlowDocument();
-            RTB_Content.Document = new FlowDocument();
-            //RTB_Title.Document = Tools.Tools.DeepCopy<FlowDocument>(ConfigContentFormat.TitleInitDocument);
-            //RTB_Content.Document = Tools.Tools.DeepCopy<FlowDocument>(ConfigContentFormat.ContentInitDocument);
-            RTB_Title.Document = ConfigContentFormatStatic.TitleInitDocument;
-            RTB_Content.Document = ConfigContentFormatStatic.ContentInitDocument;
+            //RTB_Title.Document = new FlowDocument();
+            //RTB_Content.Document = new FlowDocument();
+            ////RTB_Title.Document = Tools.Tools.DeepCopy<FlowDocument>(ConfigContentFormat.TitleInitDocument);
+            ////RTB_Content.Document = Tools.Tools.DeepCopy<FlowDocument>(ConfigContentFormat.ContentInitDocument);
+            //RTB_Title.Document = ConfigContentFormatStatic.TitleInitDocument;
+            //RTB_Content.Document = ConfigContentFormatStatic.ContentInitDocument;
+            TextRange textRange1 = new TextRange(RTB_Title.Document.ContentStart, RTB_Title.Document.ContentEnd);
+            LoadRTFFile(ref textRange1, ConfigContentFormatStatic.TitleSavePath);
+            TextRange textRange2 = new TextRange(RTB_Content.Document.ContentStart, RTB_Content.Document.ContentEnd);
+            LoadRTFFile(ref textRange2, ConfigContentFormatStatic.ContentSavePath);
+        }
+
+        private void LoadRTFFile(ref TextRange textRange, string path)
+        {
+            if (String.IsNullOrEmpty(path)) throw new ArgumentNullException();
+            else if (!File.Exists(path)) throw new FileNotFoundException();
+            else 
+            {
+                using (FileStream file = File.OpenRead(path))
+                {
+                    textRange.Load(file, DataFormats.Rtf);
+                }
+            }
         }
         #endregion
 

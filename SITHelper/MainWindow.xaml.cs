@@ -53,10 +53,10 @@ namespace SITHelper
             ConfigContentFormatStatic.SetTitle("【SIT】");
 
             ConfigContentFormatStatic.ContentParaList.Clear();
-            ConfigContentFormatStatic.AddContentParagraph("版本", "123213");
-            ConfigContentFormatStatic.AddContentParagraph("描述", null);
-            ConfigContentFormatStatic.AddContentParagraph("复现", "Yes");
-            ConfigContentFormatStatic.AddContentParagraph("描述人", "");
+            ConfigContentFormatStatic.AddContentParagraph("版本:", "123213");
+            ConfigContentFormatStatic.AddContentParagraph("描述:", null);
+            ConfigContentFormatStatic.AddContentParagraph("复现:", "Yes");
+            ConfigContentFormatStatic.AddContentParagraph("描述人:", "");
             ConfigContentFormatStatic.SetContent();
 #endif
 
