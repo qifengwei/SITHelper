@@ -28,7 +28,9 @@ namespace SITHelper
 
         private void Init()
         {
-      
+#if DEBUG
+            TB_Excel_Path.Text = @"C:\Users\齐冯伟\Desktop\123.xlsx";
+#endif
         }
 
         private void Bt_OpenFileDlg_Click(object sender, RoutedEventArgs e)

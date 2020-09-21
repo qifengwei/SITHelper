@@ -87,6 +87,7 @@ namespace SITHelper
             ////RTB_Content.Document = Tools.Tools.DeepCopy<FlowDocument>(ConfigContentFormat.ContentInitDocument);
             //RTB_Title.Document = ConfigContentFormatStatic.TitleInitDocument;
             //RTB_Content.Document = ConfigContentFormatStatic.ContentInitDocument;
+
             TextRange textRange1 = new TextRange(RTB_Title.Document.ContentStart, RTB_Title.Document.ContentEnd);
             LoadRTFFile(ref textRange1, ConfigContentFormatStatic.TitleSavePath);
             TextRange textRange2 = new TextRange(RTB_Content.Document.ContentStart, RTB_Content.Document.ContentEnd);

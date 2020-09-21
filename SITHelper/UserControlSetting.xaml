@@ -5,9 +5,68 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SITHelper"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="735"
-             Background="Blue">
+             d:DesignHeight="600" 
+             d:DesignWidth="735"
+             Background="#EEEEEE">
+    
+    <UserControl.Resources>
+
+        <Style x:Key="L_Title"
+               TargetType="Label">
+
+            <Setter Property="Margin" Value="50,20,5,5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="15"/>
+
+        </Style>
+            
+    </UserControl.Resources>
+    
     <Grid>
+
+        <ScrollViewer x:Name="SV_Setting"
+                      VerticalScrollBarVisibility="Auto">
+
+            <StackPanel xmlns:c="clr-namespace:SITHelper.Data">
+
+                <StackPanel.Resources>
+
+                </StackPanel.Resources>
+
+                <Label Content="Set the location of the title and problem description in the Excel."
+                       Style="{StaticResource L_Title}"/>
+
+                <Grid Height="50">
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="5*"/>
+
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="1"
+                                Orientation="Horizontal">
+
+                        <Label Content="Title"
+                           Grid.Column="1"/>
+
+                        <ComboBox x:Name="CB_TitleColumn"
+                                  >
+                            
+                        </ComboBox>
+
+                    </StackPanel>
+                    
+
+                </Grid>
+
+            </StackPanel>
+
+        </ScrollViewer>
 
     </Grid>
 </UserControl>
