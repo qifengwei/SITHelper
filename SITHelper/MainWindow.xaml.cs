@@ -47,8 +47,8 @@ namespace SITHelper
         {
 #if DEBUG
             //temp
-            ConfigExcelFormat.TitleColumn = 2;
-            ConfigExcelFormat.ContentColumn = 3;
+            ConfigExcelFormat.TitleColumn = 'B';
+            ConfigExcelFormat.ContentColumn = 'C';
 
             ConfigContentFormatStatic.SetTitle("【SIT】");
 

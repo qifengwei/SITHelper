@@ -19,7 +19,8 @@
             <Setter Property="FontSize" Value="15"/>
 
         </Style>
-            
+
+
     </UserControl.Resources>
     
     <Grid>
@@ -27,7 +28,7 @@
         <ScrollViewer x:Name="SV_Setting"
                       VerticalScrollBarVisibility="Auto">
 
-            <StackPanel xmlns:c="clr-namespace:SITHelper.Data">
+            <StackPanel>
 
                 <StackPanel.Resources>
 
@@ -55,6 +56,7 @@
                            Grid.Column="1"/>
 
                         <ComboBox x:Name="CB_TitleColumn"
+
                                   >
                             
                         </ComboBox>

@@ -3,18 +3,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
-namespace SITHelper.Configuration
+namespace SITHelper.Model
 {
-    [Serializable]
-    public static class ConfigExcelFormat
+    class UserControlSettingModels
     {
-        public static char TitleColumn { get; set; }
-
-        public static char ContentColumn { get; set; }
-
         public static ObservableCollection<char> ColumnName { get; set; }
 
-        static ConfigExcelFormat()
+        public UserControlSettingModels()
         {
             ColumnName = new ObservableCollection<char>
             {

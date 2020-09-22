@@ -70,7 +70,7 @@ namespace SITHelper
                 string titleText = new TextRange(RTB_Title.Document.ContentStart, RTB_Title.Document.ContentEnd).Text;
                 string contentText = new TextRange(RTB_Content.Document.ContentStart, RTB_Content.Document.ContentEnd).Text;
                 var instance = Excel.ExcelFactory.GetExcel();
-                instance.WriteInNextVacantRow(ConfigExcelFormat.TitleColumn, ConfigExcelFormat.ContentColumn, titleText, contentText) ;
+                instance.WriteInNextVacantRow(CharToIntColumnName(ConfigExcelFormat.TitleColumn), CharToIntColumnName(ConfigExcelFormat.ContentColumn), titleText, contentText) ;
                 ResetTitleContent();
             }
             else 
@@ -79,15 +79,10 @@ namespace SITHelper
             }
         }
 
+        private int CharToIntColumnName(char charColumn)=> (int)charColumn - 65;
+
         private void ResetTitleContent()
         {
-            //RTB_Title.Document = new FlowDocument();
-            //RTB_Content.Document = new FlowDocument();
-            ////RTB_Title.Document = Tools.Tools.DeepCopy<FlowDocument>(ConfigContentFormat.TitleInitDocument);
-            ////RTB_Content.Document = Tools.Tools.DeepCopy<FlowDocument>(ConfigContentFormat.ContentInitDocument);
-            //RTB_Title.Document = ConfigContentFormatStatic.TitleInitDocument;
-            //RTB_Content.Document = ConfigContentFormatStatic.ContentInitDocument;
-
             TextRange textRange1 = new TextRange(RTB_Title.Document.ContentStart, RTB_Title.Document.ContentEnd);
             LoadRTFFile(ref textRange1, ConfigContentFormatStatic.TitleSavePath);
             TextRange textRange2 = new TextRange(RTB_Content.Document.ContentStart, RTB_Content.Document.ContentEnd);
