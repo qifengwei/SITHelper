@@ -84,9 +84,9 @@ namespace SITHelper
         private void ResetTitleContent()
         {
             TextRange textRange1 = new TextRange(RTB_Title.Document.ContentStart, RTB_Title.Document.ContentEnd);
-            LoadRTFFile(ref textRange1, ConfigContentFormatStatic.TitleSavePath);
+            LoadRTFFile(ref textRange1, ConfigContentFormat.TitleSavePath);
             TextRange textRange2 = new TextRange(RTB_Content.Document.ContentStart, RTB_Content.Document.ContentEnd);
-            LoadRTFFile(ref textRange2, ConfigContentFormatStatic.ContentSavePath);
+            LoadRTFFile(ref textRange2, ConfigContentFormat.ContentSavePath);
         }
 
         private void LoadRTFFile(ref TextRange textRange, string path)

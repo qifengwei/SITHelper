@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SITHelper"
+             xmlns:c="clr-namespace:SITHelper.Model"
+             xmlns:cc="clr-namespace:SITHelper.Configuration"
              mc:Ignorable="d" 
              d:DesignHeight="600" 
              d:DesignWidth="735"
@@ -11,14 +13,7 @@
     
     <UserControl.Resources>
 
-        <Style x:Key="L_Title"
-               TargetType="Label">
 
-            <Setter Property="Margin" Value="50,20,5,5"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="FontSize" Value="15"/>
-
-        </Style>
 
 
     </UserControl.Resources>
@@ -32,16 +27,62 @@
 
                 <StackPanel.Resources>
 
+                    <c:UserControlSettingModels x:Key="ucsm"/>
+
+                    <Style x:Key="L_Title"
+                        TargetType="Label">
+
+                        <Setter Property="Margin" Value="50,20,5,5"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="FontSize" Value="15"/>
+
+                    </Style>
+
+                    <Style x:Key="L_Item" TargetType="Label">
+
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Height" Value="30"/>
+
+                    </Style>
+
+                    <Style x:Key="L_State" TargetType="Label">
+
+                        <Setter Property="Foreground" Value="Green"/>
+                        <Setter Property="Margin" Value="2"/>
+                        <Setter Property="Visibility" Value="Hidden"/>
+
+                    </Style>
+
+                    <Style x:Key="CB_Item" TargetType="ComboBox">
+
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Height" Value="20"/>
+                        <Setter Property="Margin" Value="0,3,0,7"/>
+
+                    </Style>
+
+                    <Style x:Key="Bt_Save" TargetType="Button">
+
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                        <Setter Property="Margin" Value="5,5,0,5"/>
+                        <Setter Property="Width" Value="50"/>
+                        <Setter Property="Height" Value="20"/>
+
+                    </Style>
+
                 </StackPanel.Resources>
 
                 <Label Content="Set the location of the title and problem description in the Excel."
                        Style="{StaticResource L_Title}"/>
 
-                <Grid Height="50">
+                <Grid Height="30">
 
                     <Grid.ColumnDefinitions>
 
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="0.5*"/>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="0.5*"/>
                         <ColumnDefinition Width="3*"/>
@@ -53,16 +94,44 @@
                                 Orientation="Horizontal">
 
                         <Label Content="Title"
-                           Grid.Column="1"/>
+                               Grid.Column="1"
+                               Style="{StaticResource L_Item}"/>
 
                         <ComboBox x:Name="CB_TitleColumn"
+                                  ItemsSource="{Binding Source={StaticResource ucsm}, Path=ColumnName}"
+                                  SelectedValue="{x:Static cc:ConfigExcelFormat.TitleColumn}"
+                                  Style="{StaticResource CB_Item}"
+                                  />
+                        
+                    </StackPanel>
 
-                                  >
-                            
-                        </ComboBox>
+                    <StackPanel Grid.Column="3"
+                                Orientation="Horizontal">
+
+                        <Label Content="Description"
+                               Grid.Column="1"
+                               Style="{StaticResource L_Item}"/>
+
+                        <ComboBox x:Name="CB_DescriptionColumn"
+                                  ItemsSource="{Binding Source={StaticResource ucsm}, Path=ColumnName}"
+                                  SelectedItem="{x:Static cc:ConfigExcelFormat.ContentColumn}"
+                                  Style="{StaticResource CB_Item}"/>
 
                     </StackPanel>
-                    
+
+                    <StackPanel Grid.Column="6"
+                                Orientation="Horizontal">
+
+                        <Button x:Name="Save_Location_Excel"
+                                Style="{StaticResource Bt_Save}"
+                                Content="Save" Click="Save_Location_Excel_Click"/>
+
+                        <Label x:Name="Save_Location_Excel_State"
+                               Style="{StaticResource L_State}"
+                               Content="Save sucessfully"/>
+
+                    </StackPanel>
+
 
                 </Grid>
 

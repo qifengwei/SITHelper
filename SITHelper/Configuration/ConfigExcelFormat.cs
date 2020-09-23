@@ -12,14 +12,5 @@ namespace SITHelper.Configuration
 
         public static char ContentColumn { get; set; }
 
-        public static ObservableCollection<char> ColumnName { get; set; }
-
-        static ConfigExcelFormat()
-        {
-            ColumnName = new ObservableCollection<char>
-            {
-                'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
-            };
-        }
     }
 }

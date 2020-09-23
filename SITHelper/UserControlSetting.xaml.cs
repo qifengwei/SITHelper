@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SITHelper.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +22,13 @@ namespace SITHelper
         public UserControlSetting()
         {
             InitializeComponent();
+        }
+
+        private void Save_Location_Excel_Click(object sender, RoutedEventArgs e)
+        {
+            Save_Location_Excel.Visibility = Visibility.Hidden;
+            ConfigExcelFormat.TitleColumn = (char)CB_TitleColumn.SelectedItem;
+            ConfigExcelFormat.ContentColumn = (char)CB_DescriptionColumn.SelectedItem;
         }
     }
 }

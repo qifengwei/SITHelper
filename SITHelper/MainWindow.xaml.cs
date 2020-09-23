@@ -50,14 +50,14 @@ namespace SITHelper
             ConfigExcelFormat.TitleColumn = 'B';
             ConfigExcelFormat.ContentColumn = 'C';
 
-            ConfigContentFormatStatic.SetTitle("【SIT】");
+            ConfigContentFormat.SetTitle("【SIT】");
 
-            ConfigContentFormatStatic.ContentParaList.Clear();
-            ConfigContentFormatStatic.AddContentParagraph("版本:", "123213");
-            ConfigContentFormatStatic.AddContentParagraph("描述:", null);
-            ConfigContentFormatStatic.AddContentParagraph("复现:", "Yes");
-            ConfigContentFormatStatic.AddContentParagraph("描述人:", " ");
-            ConfigContentFormatStatic.SetContent();
+            ConfigContentFormat.ContentParaList.Clear();
+            ConfigContentFormat.AddContentParagraph("版本:", "123213");
+            ConfigContentFormat.AddContentParagraph("描述:", null);
+            ConfigContentFormat.AddContentParagraph("复现:", "Yes");
+            ConfigContentFormat.AddContentParagraph("描述人:", " ");
+            ConfigContentFormat.SetContent();
 #endif
 
         }
