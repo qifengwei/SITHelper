@@ -8,6 +8,8 @@ namespace SITHelper.Configuration
     {
         public static string ConfigrationPath { get; set; } = @"AppData\Configrations";
 
+        public static string ConfigExcelFormatSaveFilePath { get; set; } = @"ExcelFormat.xml";
+
         public static void WriteXML(object e, string path)
         {
             System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(e.GetType());

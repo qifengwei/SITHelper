@@ -26,9 +26,12 @@ namespace SITHelper
 
         private void Save_Location_Excel_Click(object sender, RoutedEventArgs e)
         {
-            Save_Location_Excel.Visibility = Visibility.Hidden;
+            Save_Location_Excel.IsEnabled = false;
             ConfigExcelFormat.TitleColumn = (char)CB_TitleColumn.SelectedItem;
             ConfigExcelFormat.ContentColumn = (char)CB_DescriptionColumn.SelectedItem;
+            ConfigExcelFormat.Save();
+            Save_Location_Excel_State.Visibility = Visibility.Visible;
+            Save_Location_Excel.IsEnabled = true;
         }
     }
 }

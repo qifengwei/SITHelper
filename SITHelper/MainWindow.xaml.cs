@@ -27,7 +27,6 @@ namespace SITHelper
         private UserControl uCSetting;
         private UserControl uCHistory;
 
-        public static String WorkPath;
         public MainWindow()
         {
             CallSetPathWindow();
@@ -45,11 +44,21 @@ namespace SITHelper
 
         private void InitConfiguration()
         {
-#if DEBUG
-            //temp
-            ConfigExcelFormat.TitleColumn = 'B';
-            ConfigExcelFormat.ContentColumn = 'C';
 
+            //Init ExcelFormat
+            if (!File.Exists(System.IO.Path.Combine(WorkPath.ConfigrationPath, WorkPath.ConfigExcelFormatSaveFilePath)))
+            {
+                ConfigExcelFormat.TitleColumn = 'A';
+                ConfigExcelFormat.ContentColumn = 'B';
+                ConfigExcelFormat.Save();
+            }
+            else
+            {
+                ConfigExcelFormat.Load();
+            }
+
+
+            //Init ContentFormat
             ConfigContentFormat.SetTitle("【SIT】");
 
             ConfigContentFormat.ContentParaList.Clear();
@@ -58,7 +67,7 @@ namespace SITHelper
             ConfigContentFormat.AddContentParagraph("复现:", "Yes");
             ConfigContentFormat.AddContentParagraph("描述人:", " ");
             ConfigContentFormat.SetContent();
-#endif
+
 
         }
 
