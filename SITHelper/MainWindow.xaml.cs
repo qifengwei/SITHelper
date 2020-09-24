@@ -29,10 +29,10 @@ namespace SITHelper
 
         public MainWindow()
         {
-            CallSetPathWindow();
-            InitializeComponent();
-            InitConfiguration();
-            InitUserRecord();
+            CallSetPathWindow();//Show set workpath window
+            InitializeComponent();//Init compent
+            InitConfiguration();//init config
+            InitUserRecord();//init UserControls
         }
 
         private void InitUserRecord()
