@@ -9,7 +9,6 @@ using System.Windows.Media;
 
 namespace SITHelper.Configuration
 {
-    [Serializable]
     static class ConfigContentFormat
     {
         public static string TitleSavePath { get; set; } = @"Configuration\Data\Title.rtf";

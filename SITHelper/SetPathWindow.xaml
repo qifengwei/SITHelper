@@ -83,13 +83,11 @@
 
                 <Button x:Name="Bt_AutoGenerate"
                         Margin="55,10,0,10"
-                        Height="24.4"
                         Width="60"
                 Content="Auto" Click="Bt_AutoGenerate_Click"/>
 
                 <Button x:Name="Bt_Apply"
-                        Margin="15,10,0,10"
-                        Height="24.4"
+                        Margin="10,10,7,10"
                         Width="60"
                 Content="Apply" Click="Bt_Apply_Click"/>
 

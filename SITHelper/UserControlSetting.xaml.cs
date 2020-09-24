@@ -1,6 +1,8 @@
 ﻿using SITHelper.Configuration;
+using SITHelper.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +24,8 @@ namespace SITHelper
         public UserControlSetting()
         {
             InitializeComponent();
+            ObservableCollection<ContentFormatModel> contentFormatData = ContentFormatModel.GetObservableCollection();
+            Description_Format_Data.DataContext = contentFormatData;
         }
 
         private void Save_Location_Excel_Click(object sender, RoutedEventArgs e)

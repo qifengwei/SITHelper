@@ -14,8 +14,6 @@
     <UserControl.Resources>
 
 
-
-
     </UserControl.Resources>
     
     <Grid>
@@ -28,6 +26,7 @@
                 <StackPanel.Resources>
 
                     <c:UserControlSettingModels x:Key="ucsm"/>
+                    <c:ContentFormatModel x:Key="cfm"/>
 
                     <Style x:Key="L_Title"
                         TargetType="Label">
@@ -133,6 +132,56 @@
 
                     </StackPanel>
 
+
+                </Grid>
+
+                <Label Content="Format the task description"
+                       Style="{StaticResource L_Title}"/>
+
+                <Grid Height="200">
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="5*"/>
+
+                    </Grid.ColumnDefinitions>
+
+                    <DataGrid Grid.Column="1"
+                              x:Name="Description_Format_Data"
+                              ItemsSource="{Binding}"
+                              AutoGenerateColumns="False"
+                              Margin="5">
+
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Headline"
+                                                Binding="{Binding Host}"
+                                                Width="*"/>
+                            <DataGridTextColumn Header="Default Content"
+                                                Binding="{Binding Slave}"
+                                                Width="3*"/>
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                    <StackPanel Grid.Column="2"
+                                Orientation="Horizontal">
+
+                        <Button x:Name="Save_Description_Format"
+                                Style="{StaticResource Bt_Save}"
+                                Content="Save"
+                                VerticalAlignment="Top"/>
+
+                        <Label x:Name="Save_Description_Format_State"
+                               Style="{StaticResource L_State}"
+                               Content="Save sucessfully"
+                               VerticalAlignment="Top"/>
+
+                    </StackPanel>
 
                 </Grid>
 
