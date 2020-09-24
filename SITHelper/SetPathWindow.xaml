@@ -60,14 +60,18 @@
                  x:Name="TB_Excel_Path"
                  Margin="5,10,5,10" 
                  Grid.ColumnSpan="2" 
-                 TextChanged="TB_Excel_Path_TextChanged"/>
+                 TextChanged="TB_Excel_Path_TextChanged">
+
+        </TextBox>
 
         <TextBox Grid.Row="2"
                  Grid.Column="1"
                  x:Name="TB_Work_Path"
                  Margin="5,10,5,10" 
                  Grid.ColumnSpan="2"
-                 IsEnabled="False"/>
+                 IsEnabled="False">
+
+        </TextBox>
 
 
         <Button x:Name="Bt_OpenFileDlg"

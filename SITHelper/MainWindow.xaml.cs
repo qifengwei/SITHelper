@@ -58,6 +58,13 @@ namespace SITHelper
             }
 
 
+            if (!File.Exists(System.IO.Path.Combine(WorkPath.ConfigrationPath, WorkPath.ConfigContentFormatSaveFilePath))) { }
+            else
+            {
+                ConfigContentFormat.Load();
+            }
+
+
             //Init ContentFormat
             ConfigContentFormat.SetTitle("【SIT】");
 

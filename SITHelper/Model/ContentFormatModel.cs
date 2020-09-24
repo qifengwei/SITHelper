@@ -14,11 +14,7 @@ namespace SITHelper.Model
         {
             ObservableCollection<ContentFormatModel> value = new ObservableCollection<ContentFormatModel>();
             value.Add(new ContentFormatModel() { Host = "12345", Slave = "23456" });
-            value.Add(new ContentFormatModel() { Host = "12345", Slave = "23456" });
-            value.Add(new ContentFormatModel() { Host = "12345", Slave = "23456" });
-            value.Add(new ContentFormatModel() { Host = "12345asdadasddadadasdsasdass", Slave = "23456" });
-            value.Add(new ContentFormatModel() { Host = "12345", Slave = "23456" });
-            value.Add(new ContentFormatModel() { Host = "12345", Slave = "23456" });
+            
             return value;
         }
     }

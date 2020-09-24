@@ -28,6 +28,7 @@
                     <c:UserControlSettingModels x:Key="ucsm"/>
                     <c:ContentFormatModel x:Key="cfm"/>
 
+
                     <Style x:Key="L_Title"
                         TargetType="Label">
 
@@ -150,9 +151,9 @@
 
                     <DataGrid Grid.Column="1"
                               x:Name="Description_Format_Data"
-                              ItemsSource="{Binding}"
+                              ItemsSource="{x:Static cc:ConfigContentFormat.ContentFormatModels}"
                               AutoGenerateColumns="False"
-                              Margin="5">
+                              Margin="5" BeginningEdit="Description_Format_Data_BeginningEdit">
 
 
                         <DataGrid.Columns>
@@ -174,7 +175,7 @@
                         <Button x:Name="Save_Description_Format"
                                 Style="{StaticResource Bt_Save}"
                                 Content="Save"
-                                VerticalAlignment="Top"/>
+                                VerticalAlignment="Top" Click="Save_Description_Format_Click"/>
 
                         <Label x:Name="Save_Description_Format_State"
                                Style="{StaticResource L_State}"

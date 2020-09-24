@@ -12,6 +12,8 @@ namespace SITHelper.Configuration
 
         public static string ConfigExcelFormatSaveFilePath { get; set; } = @"ExcelFormat.xml";
 
+        public static string ConfigContentFormatSaveFilePath { get; set; } = @"ContentFormat.xml";
+
         public static void WriteXML(object e, string path)
         {
             System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(e.GetType());

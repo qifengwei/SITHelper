@@ -24,8 +24,7 @@ namespace SITHelper
         public UserControlSetting()
         {
             InitializeComponent();
-            ObservableCollection<ContentFormatModel> contentFormatData = ContentFormatModel.GetObservableCollection();
-            Description_Format_Data.DataContext = contentFormatData;
+            //Description_Format_Data.DataContext = ConfigContentFormat.ContentFormatModels;
         }
 
         private void Save_Location_Excel_Click(object sender, RoutedEventArgs e)
@@ -41,6 +40,19 @@ namespace SITHelper
         {
             if(Save_Location_Excel!=null)Save_Location_Excel.IsEnabled = true;
             if (Save_Location_Excel_State != null) Save_Location_Excel_State.Visibility = Visibility.Hidden;
+        }
+
+        private void Save_Description_Format_Click(object sender, RoutedEventArgs e)
+        {
+            Save_Description_Format.IsEnabled = false;
+            ConfigContentFormat.Save();
+            if (Save_Location_Excel_State != null) Save_Description_Format_State.Visibility = Visibility.Visible;
+        }
+
+        private void Description_Format_Data_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        {
+            if (Save_Description_Format != null) Save_Description_Format.IsEnabled = true;
+            if (Save_Description_Format_State != null) Save_Description_Format_State.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -1,15 +1,19 @@
-﻿using System;
+﻿using SITHelper.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media;
+using System.Xml.Linq;
+using System.Xml.XPath;
 
 namespace SITHelper.Configuration
 {
-    static class ConfigContentFormat
+    public static class ConfigContentFormat
     {
         public static string TitleSavePath { get; set; } = @"Configuration\Data\Title.rtf";
 
@@ -22,6 +26,8 @@ namespace SITHelper.Configuration
         public static Paragraph TitleParagraph { get; set; } = new Paragraph();
 
         public static List<Paragraph> ContentParaList { get; set; } = new List<Paragraph>();
+
+        public static ObservableCollection<ContentFormatModel> ContentFormatModels = new ObservableCollection<ContentFormatModel>();
 
         private static void SaveFlowDocumentToRTF(FlowDocument doc, string path)
         {
@@ -75,6 +81,32 @@ namespace SITHelper.Configuration
             paragraph.Inlines.Add(run2);
 
             ContentParaList.Add(paragraph);
+        }
+
+        public static void Save()
+        {
+            if (!Directory.Exists(WorkPath.ConfigrationPath)) Directory.CreateDirectory(WorkPath.ConfigrationPath);
+            XElement root = new XElement("ContentFormat");
+            foreach (var item in ContentFormatModels)
+            {
+                XElement xItem = new XElement("Item",
+                    new XElement("Host", item.Host),
+                    new XElement("Slave", item.Slave));
+                root.Add(xItem);
+            }
+            root.Save(Path.Combine(WorkPath.ConfigrationPath, WorkPath.ConfigContentFormatSaveFilePath));
+        }
+
+        public static void Load()
+        {
+            if (!File.Exists(Path.Combine(WorkPath.ConfigrationPath, WorkPath.ConfigContentFormatSaveFilePath))) return;
+            XElement root = XElement.Load(Path.Combine(WorkPath.ConfigrationPath, WorkPath.ConfigContentFormatSaveFilePath));
+            var items = root.XPathSelectElements("Item");
+            ContentFormatModels.Clear();
+            foreach (var item in items)
+            {
+                ContentFormatModels.Add(new ContentFormatModel() { Host = item.XPathSelectElement("Host").Value, Slave = item.XPathSelectElement("Slave").Value });
+            }
         }
 
     }
