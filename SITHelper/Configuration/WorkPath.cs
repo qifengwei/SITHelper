@@ -6,6 +6,8 @@ namespace SITHelper.Configuration
 {
     public static class WorkPath
     {
+        public static string DefalutWorkPath { get; set; } = @"WorkPath";
+
         public static string ConfigrationPath { get; set; } = @"AppData\Configrations";
 
         public static string ConfigExcelFormatSaveFilePath { get; set; } = @"ExcelFormat.xml";

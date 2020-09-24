@@ -30,8 +30,13 @@ namespace SITHelper
             ConfigExcelFormat.TitleColumn = (char)CB_TitleColumn.SelectedItem;
             ConfigExcelFormat.ContentColumn = (char)CB_DescriptionColumn.SelectedItem;
             ConfigExcelFormat.Save();
-            Save_Location_Excel_State.Visibility = Visibility.Visible;
-            Save_Location_Excel.IsEnabled = true;
+            if (Save_Location_Excel_State != null) Save_Location_Excel_State.Visibility = Visibility.Visible;
+        }
+
+        private void ComboItem_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(Save_Location_Excel!=null)Save_Location_Excel.IsEnabled = true;
+            if (Save_Location_Excel_State != null) Save_Location_Excel_State.Visibility = Visibility.Hidden;
         }
     }
 }

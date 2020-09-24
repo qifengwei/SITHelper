@@ -1,5 +1,6 @@
 ﻿using Excel;
 using Microsoft.Win32;
+using SITHelper.Configuration;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,9 +29,7 @@ namespace SITHelper
 
         private void Init()
         {
-#if DEBUG
-            TB_Excel_Path.Text = @"C:\Users\齐冯伟\Desktop\123.xlsx";
-#endif
+
         }
 
         private void Bt_OpenFileDlg_Click(object sender, RoutedEventArgs e)
@@ -67,6 +66,7 @@ namespace SITHelper
             }
             else 
             {
+                if (!Directory.Exists(TB_Work_Path.Text)) Directory.CreateDirectory(TB_Work_Path.Text);
                 if (!(System.IO.Path.GetExtension(TB_Excel_Path.Text) == ".xlsx"))
                 {
                     MessageBox.Show("The file path is not a valid Excel file");
@@ -105,6 +105,11 @@ namespace SITHelper
         private void TB_Excel_Path_LostFocus(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("show");
+        }
+
+        private void Bt_AutoGenerate_Click(object sender, RoutedEventArgs e)
+        {
+            TB_Excel_Path.Text = System.IO.Path.GetFullPath(System.IO.Path.Combine(WorkPath.DefalutWorkPath, $"{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx"));
         }
     }
 }

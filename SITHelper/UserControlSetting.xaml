@@ -68,6 +68,7 @@
                         <Setter Property="Margin" Value="5,5,0,5"/>
                         <Setter Property="Width" Value="50"/>
                         <Setter Property="Height" Value="20"/>
+                        <Setter Property="IsEnabled" Value="False"/>
 
                     </Style>
 
@@ -100,7 +101,7 @@
                         <ComboBox x:Name="CB_TitleColumn"
                                   ItemsSource="{Binding Source={StaticResource ucsm}, Path=ColumnName}"
                                   SelectedValue="{x:Static cc:ConfigExcelFormat.TitleColumn}"
-                                  Style="{StaticResource CB_Item}"
+                                  Style="{StaticResource CB_Item}" SelectionChanged="ComboItem_SelectionChanged"
                                   />
                         
                     </StackPanel>
@@ -115,7 +116,7 @@
                         <ComboBox x:Name="CB_DescriptionColumn"
                                   ItemsSource="{Binding Source={StaticResource ucsm}, Path=ColumnName}"
                                   SelectedItem="{x:Static cc:ConfigExcelFormat.ContentColumn}"
-                                  Style="{StaticResource CB_Item}"/>
+                                  Style="{StaticResource CB_Item}" SelectionChanged="ComboItem_SelectionChanged"/>
 
                     </StackPanel>
 

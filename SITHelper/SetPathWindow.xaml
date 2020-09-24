@@ -76,11 +76,27 @@
                 Margin="8,8,8,8"
                 Content="Select File" Click="Bt_OpenFileDlg_Click"/>
 
-        <Button x:Name="Bt_Apply"
-                Grid.Column="2"
-                Grid.Row="3"
-                Margin="120,10,10,10"
+        <Grid Grid.Row="3"
+              Grid.Column="2">
+
+            <StackPanel Orientation="Horizontal">
+
+                <Button x:Name="Bt_AutoGenerate"
+                        Margin="55,10,0,10"
+                        Height="24.4"
+                        Width="60"
+                Content="Auto" Click="Bt_AutoGenerate_Click"/>
+
+                <Button x:Name="Bt_Apply"
+                        Margin="15,10,0,10"
+                        Height="24.4"
+                        Width="60"
                 Content="Apply" Click="Bt_Apply_Click"/>
+
+            </StackPanel>
+
+        </Grid>
+        
 
         <Button x:Name="Bt_Close"
                 Grid.Column="3"

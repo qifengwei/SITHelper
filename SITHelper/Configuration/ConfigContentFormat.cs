@@ -51,15 +51,6 @@ namespace SITHelper.Configuration
             TitleInitDocument.Blocks.Add(TitleParagraph);
             SaveFlowDocumentToRTF(TitleInitDocument, TitleSavePath);
 
-            //TitleInitDocument.Blocks.Clear();
-            //Paragraph paragraph = new Paragraph();           
-            //Run run = new Run(title);
-            //run.FontSize = 18;
-            //run.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromArgb(0xff, 0xff, 0xff, 0xff));
-            //Bold bold = new Bold(run);
-            //TitleParagraph.Inlines.Add(run);
-            //TitleInitDocument.Blocks.Add(TitleParagraph);
-            //SaveFlowDocumentToRTF(TitleInitDocument, TitleSavePath);
         }
 
         public static void SetContent()
