@@ -14,6 +14,8 @@ namespace SITHelper.Configuration
 
         public static string ConfigContentFormatSaveFilePath { get; set; } = @"ContentFormat.xml";
 
+        public static string ConfigTitleFormatSaveFilePath { get; set; } = @"TitleFormat.xml";
+
         public static void WriteXML(object e, string path)
         {
             System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(e.GetType());

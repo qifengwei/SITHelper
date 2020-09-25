@@ -19,6 +19,8 @@ namespace SITHelper.Configuration
 
         public static string ContentSavePath { get; set; } = @"Configuration\Data\Content.rtf";
 
+        public static string Title { get; set; } = @"[SIT]";
+
         public static FlowDocument TitleInitDocument { get; set; } = new FlowDocument();
 
         public static FlowDocument ContentInitDocument { get; set; } = new FlowDocument();
@@ -45,11 +47,11 @@ namespace SITHelper.Configuration
             }
         }
 
-        public static void SetTitle(string title) 
+        public static void SetTitle() 
         {
             TitleParagraph.Inlines.Clear();
             TitleInitDocument.Blocks.Clear();
-            Run run = new Run(title);
+            Run run = new Run(Title);
             run.FontSize = 18;
             run.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromArgb(0xff, 0xdf, 0xdf, 0xdf));
             TitleParagraph.Inlines.Add(run);
@@ -72,6 +74,7 @@ namespace SITHelper.Configuration
             run1.FontSize = 12;
             run1.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromArgb(0xff, 0xff, 0xff, 0x00));
 
+            if (contentAppend == "") contentAppend = " ";
             Run run2 = new Run(contentAppend??" ");
             run2.FontSize = 12;
             run2.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromArgb(0xff, 0xd0, 0xd0, 0xd0));
@@ -83,7 +86,7 @@ namespace SITHelper.Configuration
             ContentParaList.Add(paragraph);
         }
 
-        public static void Save()
+        public static void SaveContent()
         {
             if (!Directory.Exists(WorkPath.ConfigrationPath)) Directory.CreateDirectory(WorkPath.ConfigrationPath);
             XElement root = new XElement("ContentFormat");
@@ -97,7 +100,7 @@ namespace SITHelper.Configuration
             root.Save(Path.Combine(WorkPath.ConfigrationPath, WorkPath.ConfigContentFormatSaveFilePath));
         }
 
-        public static void Load()
+        public static void LoadContent()
         {
             if (!File.Exists(Path.Combine(WorkPath.ConfigrationPath, WorkPath.ConfigContentFormatSaveFilePath))) return;
             XElement root = XElement.Load(Path.Combine(WorkPath.ConfigrationPath, WorkPath.ConfigContentFormatSaveFilePath));
@@ -107,6 +110,31 @@ namespace SITHelper.Configuration
             {
                 ContentFormatModels.Add(new ContentFormatModel() { Host = item.XPathSelectElement("Host").Value, Slave = item.XPathSelectElement("Slave").Value });
             }
+        }
+
+        public static void SaveTitle()
+        {
+            if (!Directory.Exists(WorkPath.ConfigrationPath)) Directory.CreateDirectory(WorkPath.ConfigrationPath);
+            XElement root = new XElement("Title", Title);
+            root.Save(Path.Combine(WorkPath.ConfigrationPath, WorkPath.ConfigTitleFormatSaveFilePath));
+        }
+
+        public static void LoadTitle()
+        {
+            if (!File.Exists(Path.Combine(WorkPath.ConfigrationPath, WorkPath.ConfigTitleFormatSaveFilePath))) return;
+            XElement root = XElement.Load(Path.Combine(WorkPath.ConfigrationPath, WorkPath.ConfigTitleFormatSaveFilePath));
+            Title = root.Value;
+        }
+
+        public static void Packaging()
+        {
+            SetTitle();
+            ContentParaList.Clear();
+            foreach (var item in ContentFormatModels)
+            {
+                AddContentParagraph(item.Host, item.Slave);
+            }
+            SetContent();
         }
 
     }

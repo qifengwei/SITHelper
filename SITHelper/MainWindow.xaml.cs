@@ -57,24 +57,17 @@ namespace SITHelper
                 ConfigExcelFormat.Load();
             }
 
-
-            if (!File.Exists(System.IO.Path.Combine(WorkPath.ConfigrationPath, WorkPath.ConfigContentFormatSaveFilePath))) { }
+            //Init ContentFormat
+            if (!File.Exists(System.IO.Path.Combine(WorkPath.ConfigrationPath, WorkPath.ConfigContentFormatSaveFilePath)))
+            {
+                ConfigContentFormat.Packaging();
+            }
             else
             {
-                ConfigContentFormat.Load();
+                ConfigContentFormat.LoadTitle();
+                ConfigContentFormat.LoadContent();
+                ConfigContentFormat.Packaging();
             }
-
-
-            //Init ContentFormat
-            ConfigContentFormat.SetTitle("【SIT】");
-
-            ConfigContentFormat.ContentParaList.Clear();
-            ConfigContentFormat.AddContentParagraph("版本:", "123213");
-            ConfigContentFormat.AddContentParagraph("描述:", null);
-            ConfigContentFormat.AddContentParagraph("复现:", "Yes");
-            ConfigContentFormat.AddContentParagraph("描述人:", " ");
-            ConfigContentFormat.SetContent();
-
 
         }
 

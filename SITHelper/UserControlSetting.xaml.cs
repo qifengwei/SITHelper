@@ -45,7 +45,8 @@ namespace SITHelper
         private void Save_Description_Format_Click(object sender, RoutedEventArgs e)
         {
             Save_Description_Format.IsEnabled = false;
-            ConfigContentFormat.Save();
+            ConfigContentFormat.SaveContent();
+            ConfigContentFormat.Packaging();
             if (Save_Location_Excel_State != null) Save_Description_Format_State.Visibility = Visibility.Visible;
         }
 
@@ -53,6 +54,21 @@ namespace SITHelper
         {
             if (Save_Description_Format != null) Save_Description_Format.IsEnabled = true;
             if (Save_Description_Format_State != null) Save_Description_Format_State.Visibility = Visibility.Hidden;
+        }
+
+        private void Save_Title_Format_Click(object sender, RoutedEventArgs e)
+        {
+            Save_Title_Format.IsEnabled = false;
+            ConfigContentFormat.Title = Default_Title.Text;
+            ConfigContentFormat.SaveTitle();
+            ConfigContentFormat.Packaging();
+            if (Save_Title_Format_State != null) Save_Title_Format_State.Visibility = Visibility.Visible;
+        }
+
+        private void Default_Title_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Save_Description_Format != null) Save_Title_Format.IsEnabled = true;
+            if (Save_Description_Format_State != null) Save_Title_Format_State.Visibility = Visibility.Hidden;
         }
     }
 }

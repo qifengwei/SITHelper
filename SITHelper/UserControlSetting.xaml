@@ -72,6 +72,12 @@
 
                     </Style>
 
+                    <Style x:Key="TB_Input" TargetType="TextBox">
+
+                        <Setter Property="Margin" Value="5"/>
+
+                    </Style>
+
                 </StackPanel.Resources>
 
                 <Label Content="Set the location of the title and problem description in the Excel."
@@ -135,8 +141,52 @@
 
 
                 </Grid>
+                
+                
+                <!--Format task title-->
+                <Label Content="Format task title"
+                       Style="{StaticResource L_Title}"/>
 
-                <Label Content="Format the task description"
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="5*"/>
+
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Column="1">
+
+                        <Label Content="Default Title"
+                               Style="{StaticResource L_Item}"/>
+
+                        <TextBox x:Name="Default_Title"
+                                 Text="{x:Static cc:ConfigContentFormat.Title}"
+                                 Style="{StaticResource TB_Input}"
+                                 Width="370" TextChanged="Default_Title_TextChanged"/>
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="2">
+
+                        <Button x:Name="Save_Title_Format"
+                            Style="{StaticResource Bt_Save}"
+                            Content="Save" Click="Save_Title_Format_Click"/>
+
+                        <Label x:Name="Save_Title_Format_State"
+                               Style="{StaticResource L_State}"
+                               Content="Save sucessfully"/>
+
+                    </StackPanel>
+                    
+
+                </Grid>
+
+                <!--Format task description-->
+                <Label Content="Format task description"
                        Style="{StaticResource L_Title}"/>
 
                 <Grid Height="200">
