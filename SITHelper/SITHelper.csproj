@@ -77,4 +77,10 @@
     <ProjectReference Include="..\Excel\Excel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="FileSelector">
+      <HintPath>..\dll\FileSelector.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

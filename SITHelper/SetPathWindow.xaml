@@ -77,8 +77,14 @@
         <Button x:Name="Bt_OpenFileDlg"
                 Grid.Column="3"
                 Grid.Row="1"
-                Margin="8,8,8,8"
+                Margin="5,8,5,8"
                 Content="Select File" Click="Bt_OpenFileDlg_Click"/>
+
+        <Button x:Name="Bt_OpenFolder"
+                Grid.Column="3"
+                Grid.Row="2"
+                Margin="5,8,5,8"
+                Content="Select Path" Click="Bt_OpenFolder_Click"/>
 
         <Grid Grid.Row="3"
               Grid.Column="2">

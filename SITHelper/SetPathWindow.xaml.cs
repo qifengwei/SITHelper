@@ -43,6 +43,18 @@ namespace SITHelper
             }
         }
 
+        private void Bt_OpenFolder_Click(object sender, RoutedEventArgs e)
+        {
+            FileSelector.FolderSelector folder = new FileSelector.FolderSelector();
+            folder.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            Nullable<bool> result = folder.ShowDialog();
+            if (result == true)
+            {
+                TB_Work_Path.Text = folder.SelectedPath;
+            }
+            
+        }
+
         private void Bt_Close_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -111,5 +123,7 @@ namespace SITHelper
         {
             TB_Excel_Path.Text = System.IO.Path.GetFullPath(System.IO.Path.Combine(WorkPath.DefalutWorkPath, $"{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx"));
         }
+
+
     }
 }
