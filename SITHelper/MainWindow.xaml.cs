@@ -124,6 +124,8 @@ namespace SITHelper
                     GridMain.Children.Add(uCSetting);
                     break;
                 case "LVI_History":
+                    uCHistory = null;
+                    uCHistory = new UserControlHistory();
                     GridMain.Children.Add(uCHistory);
                     break;
                 case "LVI_Close":
