@@ -39,6 +39,8 @@ namespace SITHelper
             {
                 Histories.Add(new HistoryGridModel() { Title = titleList[i], Description = contentList[i] });
             }
+            //HistoryGrid.DataContext = Histories;
+            this.InitializeComponent();
         }
 
         private int CharToIntColumnName(char charColumn) => (int)charColumn - 65;

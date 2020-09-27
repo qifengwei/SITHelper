@@ -112,5 +112,15 @@
                 Margin="10"
                 Content="Exit" Click="Bt_Close_Click"/>
 
+
+        <Label  x:Name="Error_Info" 
+                Grid.Row="4"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"
+               Content=""
+               Margin="10,0,10,15"
+               Foreground="Red"
+               />
+
     </Grid>
 </Window>

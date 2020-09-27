@@ -78,10 +78,19 @@ namespace SITHelper
             }
             else 
             {
-                if (!Directory.Exists(TB_Work_Path.Text)) Directory.CreateDirectory(TB_Work_Path.Text);
+                try
+                {
+                    if (!Directory.Exists(TB_Work_Path.Text)) Directory.CreateDirectory(TB_Work_Path.Text);
+                }
+                catch
+                {
+                    Error_Info.Content = "Please enter the correct work path";
+                    return;
+                }
+                
                 if (!(System.IO.Path.GetExtension(TB_Excel_Path.Text) == ".xlsx"))
                 {
-                    MessageBox.Show("The file path is not a valid Excel file");
+                    Error_Info.Content = "The Excel Path is not a valid Excel file";
                     return;
                 }
                 try
@@ -91,17 +100,17 @@ namespace SITHelper
                 }
                 catch (DirectoryNotFoundException err)
                 {
-                    MessageBox.Show($"Can't create excel at {TB_Excel_Path.Text}, {err.Message}");
+                    Error_Info.Content =  $"Can't create excel at {TB_Excel_Path.Text}, {err.Message}";
                     return;
                 }
                 catch (NotSupportedException err)
                 {
-                    MessageBox.Show($"The format for path is invalid, {err.Message}");
+                    Error_Info.Content =  $"The format for path is invalid, {err.Message}";
                     return;
                 }
                 catch (Exception err)
                 {
-                    MessageBox.Show($"{err.Message}");
+                    Error_Info.Content =  $"{err.Message}";
                     return;
                 }
             }

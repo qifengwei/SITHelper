@@ -25,6 +25,8 @@
                   ItemsSource="{x:Static local:UserControlHistory.Histories}"
                   AutoGenerateColumns="False"
                   RowHeight="NaN"
+                  RowHeaderWidth="0"
+                  
                   >
 
             <DataGrid.Resources>
@@ -39,7 +41,6 @@
                     <Setter Property="BorderThickness" Value="3"/>
                     <Setter Property="Height" Value="33"/>
                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
-
                 </Style>
 
                 <Style  TargetType="DataGridCell">
@@ -60,7 +61,7 @@
 
                 <DataGridTextColumn Header="Title" Width="3*" HeaderStyle="{StaticResource header}" x:Name="TitleColumn" Binding="{Binding Title, Mode=TwoWay}"/>
                 <DataGridTextColumn Header="Description" Width="5*" HeaderStyle="{StaticResource header}" x:Name="DescriptionColumn" Binding="{Binding Description, Mode=TwoWay}"/>
-
+ 
             </DataGrid.Columns>
                     
         </DataGrid>
