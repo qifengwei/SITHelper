@@ -58,8 +58,8 @@
 
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Title" Width="3*" HeaderStyle="{StaticResource header}" x:Name="TitleColumn" Binding="{Binding Title}"/>
-                <DataGridTextColumn Header="Description" Width="5*" HeaderStyle="{StaticResource header}" x:Name="DescriptionColumn" Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="Title" Width="3*" HeaderStyle="{StaticResource header}" x:Name="TitleColumn" Binding="{Binding Title, Mode=TwoWay}"/>
+                <DataGridTextColumn Header="Description" Width="5*" HeaderStyle="{StaticResource header}" x:Name="DescriptionColumn" Binding="{Binding Description, Mode=TwoWay}"/>
 
             </DataGrid.Columns>
                     
