@@ -11,5 +11,7 @@ namespace Excel
         public void CreateWB();
 
         bool WriteInNextVacantRow(int ColumnTitle, int ColumnContents, string Title, string Contents);
+
+        void ReadHistory(int ColumnTitle, int ColumnContents, List<string>TitleList, List<string>ContentList);
     }
 }

@@ -1,4 +1,6 @@
-﻿using SITHelper.Model;
+﻿using Excel;
+using SITHelper.Configuration;
+using SITHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,7 +30,17 @@ namespace SITHelper
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
-            Histories.Add(new HistoryGridModel() { Title = "123asdasd 萨达沙发沙发沙发按时发士大夫敢死队风格但是东莞市东莞市豆腐干豆腐干豆腐干豆腐干地方豆腐干地方法规", Description = "234" });
+            Histories = new ObservableCollection<HistoryGridModel>();
+            List<string> titleList = new List<string>();
+            List<string> contentList = new List<string>();
+            var instance = ExcelFactory.GetExcel();
+            instance.ReadHistory(CharToIntColumnName(ConfigExcelFormat.TitleColumn), CharToIntColumnName(ConfigExcelFormat.ContentColumn), titleList, contentList);
+            for (int i = 0; i < titleList.Count; i++)
+            {
+                Histories.Add(new HistoryGridModel() { Title = titleList[i], Description = contentList[i] });
+            }
         }
+
+        private int CharToIntColumnName(char charColumn) => (int)charColumn - 65;
     }
 }

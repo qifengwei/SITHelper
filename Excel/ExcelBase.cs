@@ -13,6 +13,8 @@ namespace Excel
 
         private static ExcelBase instance = new ExcelBase();
 
+        private static String WorkSheetName = "问题列表";
+
         private ExcelBase() { }
 
         public static ExcelBase GetExcel() => instance;
@@ -43,9 +45,9 @@ namespace Excel
             using (var stream = new FileStream(excelPath, FileMode.Open, FileAccess.Read))
             {
                 workbook = WorkbookFactory.Create(excelPath);
-                if (workbook.GetSheet("问题列表") == null)
+                if (workbook.GetSheet(WorkSheetName) == null)
                 {
-                    ISheet sheet = workbook.CreateSheet("问题列表");
+                    ISheet sheet = workbook.CreateSheet(WorkSheetName);
                 }
             }
 
@@ -64,7 +66,7 @@ namespace Excel
 
         private void WriteInNPOINextVacantRow(int ColumnTitle, int ColumnContents, string Title, string Contents, ref IWorkbook wb)
         {
-            ISheet sheet = wb.GetSheet("问题列表");
+            ISheet sheet = wb.GetSheet(WorkSheetName);
             sheet.SetColumnWidth(ColumnTitle, 25 * 256);
             sheet.SetColumnWidth(ColumnContents, 50 * 256);
             int rowNum = sheet.LastRowNum + 1;
@@ -94,6 +96,18 @@ namespace Excel
             using (FileStream fs = new FileStream(excelPath, FileMode.Create))
             {
                 wb.Write(fs);
+            }
+        }
+
+        public void ReadHistory(int columnTitle, int columnContents, List<string> titleList, List<string> contentList)
+        {
+            //List<string> contentList = new List<string>();
+            IWorkbook workbook = OpenWB();
+            ISheet worksheet = workbook.GetSheet(WorkSheetName);
+            for(int i = 1; i<=worksheet.LastRowNum;i++)
+            {
+                titleList.Add(worksheet.GetRow(i).GetCell(columnTitle).StringCellValue);
+                contentList.Add(worksheet.GetRow(i).GetCell(columnContents).StringCellValue);
             }
         }
     }
