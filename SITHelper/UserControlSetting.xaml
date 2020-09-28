@@ -236,6 +236,64 @@
 
                 </Grid>
 
+                <!--Set Log Path-->
+                <Label Content="Set the log store path"
+                       Style="{StaticResource L_Title}"/>
+
+                <Grid Height="200">
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="5*"/>
+
+                    </Grid.ColumnDefinitions>
+
+                    <DataGrid x:Name="LogPathGrid"
+                              Grid.Row="0"
+                              Grid.Column="1"
+                              ItemsSource="{x:Static cc:ConfigLogSave.logPaths}"
+                              AutoGenerateColumns="False"
+                              RowHeight="NaN" CellEditEnding="LogPathGrid_CellEditEnding"
+                              >
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="TargetPath" Width="4*" Binding="{Binding TargetPath}"/>
+                            <DataGridTextColumn Header="SourcePath" Width="4*" Binding="{Binding SourcePath}"/>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Select" Click="Button_Click"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+
+
+                    </DataGrid>
+
+                    <StackPanel Grid.Column="2"
+                                Orientation="Horizontal">
+
+                        <Button x:Name="Save_LogPath"
+                                Style="{StaticResource Bt_Save}"
+                                Content="Save"
+                                VerticalAlignment="Top" Click="Save_LogPath_Click"/>
+
+                        <Label x:Name="Save_LogPath_State"
+                               Style="{StaticResource L_State}"
+                               Content="Save sucessfully"
+                               VerticalAlignment="Top"/>
+
+                    </StackPanel>
+
+                </Grid>
+                
+
             </StackPanel>
 
         </ScrollViewer>

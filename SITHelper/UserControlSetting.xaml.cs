@@ -3,6 +3,7 @@ using SITHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -69,6 +70,33 @@ namespace SITHelper
         {
             if (Save_Description_Format != null) Save_Title_Format.IsEnabled = true;
             if (Save_Description_Format_State != null) Save_Title_Format_State.Visibility = Visibility.Hidden;
+        }
+
+        private void LogPathGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if(Save_LogPath!=null) Save_LogPath.IsEnabled = true;
+            if (Save_LogPath_State != null) Save_LogPath_State.Visibility = Visibility.Hidden;
+        }
+
+        private void Save_LogPath_Click(object sender, RoutedEventArgs e)
+        {
+            Save_LogPath.IsEnabled = false;
+            ConfigLogSave.Save();
+            if (Save_LogPath_State != null) Save_LogPath_State.Visibility = Visibility.Visible;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            FileSelector.FolderSelector folder = new FileSelector.FolderSelector();
+            var result = folder.ShowDialog();
+            if (result??false)
+            {
+                DataRowView row = (DataRowView)LogPathGrid.SelectedItem;
+                if (row != null)
+                {
+                    (row[2]) = folder.SelectedPath;
+                }
+            }
         }
     }
 }

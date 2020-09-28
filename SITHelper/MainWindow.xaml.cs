@@ -1,4 +1,5 @@
 ﻿using SITHelper.Configuration;
+using SITHelper.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -67,6 +68,17 @@ namespace SITHelper
                 ConfigContentFormat.LoadTitle();
                 ConfigContentFormat.LoadContent();
                 ConfigContentFormat.Packaging();
+            }
+
+            //Init LogPath
+            if (!File.Exists(System.IO.Path.Combine(WorkPath.ConfigrationPath, WorkPath.ConfigLogSaveFilePath)))
+            {
+                ConfigLogSave.logPaths = new System.Collections.ObjectModel.ObservableCollection<LogPathStruct>();
+                ConfigLogSave.logPaths.Add(new LogPathStruct() { Name = "Name", SourcePath = "SourcePath", TargetPath = "TargetPath" });
+            }
+            else
+            {
+                ConfigLogSave.Load();
             }
 
         }
