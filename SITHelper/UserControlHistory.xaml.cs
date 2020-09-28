@@ -39,10 +39,19 @@ namespace SITHelper
             {
                 Histories.Add(new HistoryGridModel() { Title = titleList[i], Description = contentList[i] });
             }
-            //HistoryGrid.DataContext = Histories;
-            this.InitializeComponent();
+            ((System.Windows.Controls.Grid)this.Parent).Children.Add(new UserControlHistory());
         }
 
         private int CharToIntColumnName(char charColumn) => (int)charColumn - 65;
+
+        private void HistoryGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            Apply.IsEnabled = true;
+        }
+
+        private void Apply_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

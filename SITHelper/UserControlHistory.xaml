@@ -25,7 +25,7 @@
                   ItemsSource="{x:Static local:UserControlHistory.Histories}"
                   AutoGenerateColumns="False"
                   RowHeight="NaN"
-                  RowHeaderWidth="0"
+                  RowHeaderWidth="0" CellEditEnding="HistoryGrid_CellEditEnding"
                   
                   >
 
@@ -94,7 +94,8 @@
             <Button x:Name="Apply"
                     Grid.Column="3"
                     Grid.Row="1"
-                    Content="Apply"/>
+                    Content="Apply"
+                    IsEnabled="False" Click="Apply_Click"/>
 
         </Grid>
         
