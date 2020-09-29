@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="735"
              Background="#121212"
+             xmlns:c="clr-namespace:SITHelper.Configuration"
              >
 
     <UserControl.Resources>
@@ -323,6 +324,23 @@
 
                 </CheckBox>
 
+            </Grid>
+            
+            <!--Select Log Type-->
+            <Grid Grid.Row="1"
+                  Grid.Column="0"
+                  >
+
+                <StackPanel Orientation="Vertical">
+
+                    <ListView x:Name="LogType" 
+                              ItemsSource="{x:Static c:ConfigLogSave.logPaths}">
+
+                        
+                    </ListView>
+                    
+                </StackPanel>
+                
             </Grid>
             
         </Grid>
