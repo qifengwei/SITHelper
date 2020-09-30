@@ -128,6 +128,9 @@ namespace SITHelper
 
         private void StartCopy()
         {
+            DateTime startTime = OccurTime.DateTime.AddSeconds(-1.0 * int.Parse(TB_Previous.Text));
+            DateTime endTime = OccurTime.DateTime.AddSeconds(int.Parse(TB_Later.Text));
+
             for (int i = 0; i < LogType.Children.Count; i++)
             {               
                 CheckBox checkBox = (CheckBox)LogType.Children[i];
@@ -136,11 +139,14 @@ namespace SITHelper
                            where path.Name == checkBox.Name
                            select path;
                 string sourcePath = find.ToList()[0].SourcePath;
-                string targetPath = find.ToList()[0].TargetPath;
+
+                string title = new TextRange(RTB_Title.Document.ContentStart, RTB_Title.Document.ContentEnd).Text.Replace(ConfigContentFormat.Title, "").Trim();
+
+                string targetPath = System.IO.Path.Combine(WorkPath.DefalutWorkPath, title, find.ToList()[0].TargetPath);
 
                 if (checkBox.IsChecked == true)
                 {
-                    SaveLogFactory.GetInstance().CopyLog(sourcePath, targetPath);
+                    SaveLogFactory.GetInstance().CopyLog(sourcePath, targetPath,startTime,endTime);
                 }
             }
         }

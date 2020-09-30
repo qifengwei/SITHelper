@@ -114,6 +114,16 @@ namespace SITHelper
                     return;
                 }
             }
+            try
+            {
+                if (!Directory.Exists(TB_Work_Path.Text)) Directory.CreateDirectory(TB_Work_Path.Text);
+                WorkPath.DefalutWorkPath = TB_Work_Path.Text;
+            }
+            catch
+            {
+                Error_Info.Content = "Please enter the correct work path";
+                return;
+            }
             this.Close();
         }
 
