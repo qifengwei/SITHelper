@@ -75,8 +75,8 @@ namespace SITHelper
         }
         private void ConfirmContent_Click(object sender, RoutedEventArgs e)
         {
-            RecordInExcel();
             StartCopy();
+            RecordInExcel();            
         }
 
         private void RecordInExcel()
