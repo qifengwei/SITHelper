@@ -8,21 +8,40 @@
              d:DesignHeight="600" d:DesignWidth="735"
              Background="#121212"
              xmlns:c="clr-namespace:SITHelper.Configuration"
+             xmlns:m="clr-namespace:SITHelper.Model"
              xmlns:con="clr-namespace:Utility.Tool.Controls.View;assembly=Utility.Tool.Controls"
+             xmlns:v="clr-namespace:SITHelper.Validation"
              >
 
     <UserControl.Resources>
-
+        <!--Time Validation-->
         <ControlTemplate x:Key="ValidationTimeInput">
 
             <DockPanel>
 
-                <TextBlock Foreground="Red">!</TextBlock>
-                
+                <TextBlock Foreground="Red" FontSize="15" FontWeight="Black">!</TextBlock>
+                <AdornedElementPlaceholder/>
+
             </DockPanel>
             
         </ControlTemplate>
-        
+
+        <Style x:Key="TextBoxInError" TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+
+                    <Setter Property="ToolTip"
+                                     Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                                                Path=(Validation.Errors)[0].ErrorContent}">
+
+                    </Setter>
+
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <m:LogDurationTime x:Key="validationtime"/>
+
         <!--Title Style Template-->
         <Style x:Key="RTB_Title_Style"
                TargetType="RichTextBox">
@@ -366,10 +385,27 @@
                             <Label Content=" Previous" 
                                Style="{StaticResource L_ItemName}"/>
 
-                            <TextBox Width="30" 
+                            <TextBox x:Name="TB_Previous"
+                                     Width="40" 
                                      Height="18" 
-                                     Text="180"
-                                     >
+                                     Validation.ErrorTemplate="{StaticResource ValidationTimeInput}"
+                                     Style="{StaticResource TextBoxInError}">
+                                
+                                <TextBox.Text>
+
+                                    <Binding Path="PreviousTime" Source="{StaticResource validationtime }"
+                                             UpdateSourceTrigger="PropertyChanged">
+
+                                        <Binding.ValidationRules>
+
+                                            <v:TimeRangeRule Min="0" Max="1200"/>
+
+                                        </Binding.ValidationRules>
+                                        
+                                    </Binding>
+                                    
+                                </TextBox.Text>
+                                     
 
                             </TextBox>
 
@@ -382,7 +418,26 @@
                             <Label Content=" Later" 
                                Style="{StaticResource L_ItemName}"/>
 
-                            <TextBox Width="30" Height="18" Text="60">
+                            <TextBox x:Name="TB_Later"
+                                     Width="40" 
+                                     Height="18" 
+                                     Validation.ErrorTemplate="{StaticResource ValidationTimeInput}"
+                                     Style="{StaticResource TextBoxInError}">
+
+                                <TextBox.Text>
+
+                                    <Binding Path="LaterTime" Source="{StaticResource validationtime }"
+                                             UpdateSourceTrigger="PropertyChanged">
+
+                                        <Binding.ValidationRules>
+
+                                            <v:TimeRangeRule Min="0" Max="1200"/>
+
+                                        </Binding.ValidationRules>
+
+                                    </Binding>
+
+                                </TextBox.Text>
 
                             </TextBox>
 
