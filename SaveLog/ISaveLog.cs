@@ -4,7 +4,8 @@ using System.Text;
 
 namespace SaveLog
 {
-    interface ISaveLog
+    public interface ISaveLog
     {
+        public void CopyLog(string sourcePath, string targetPath);
     }
 }

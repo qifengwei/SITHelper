@@ -1,6 +1,7 @@
 ﻿using SITHelper.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -13,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Linq;
+using SaveLog;
 
 namespace SITHelper
 {
@@ -27,9 +30,24 @@ namespace SITHelper
             UserInit();
         }
 
+
         private void UserInit()
         {
             ResetTitleContent();
+            GenerateLogPath();
+        }
+
+        private void GenerateLogPath()
+        {
+            foreach (var log in ConfigLogSave.logPaths)
+            {
+                CheckBox checkBox = new CheckBox();
+                checkBox.Content = log.Name;
+                checkBox.Name = log.Name;
+                checkBox.Foreground = new SolidColorBrush(System.Windows.Media.Color.FromArgb(0xff, 0xb4, 0xb4, 0xb4));
+                //checkBox.Visibility = Visibility.Visible;
+                LogType.Children.Add(checkBox);
+            }
         }
 
         private void CB_Fixed_Click(object sender, RoutedEventArgs e) => SetTopMost(CB_Fixed.IsChecked ?? false);
@@ -58,6 +76,7 @@ namespace SITHelper
         private void ConfirmContent_Click(object sender, RoutedEventArgs e)
         {
             RecordInExcel();
+            StartCopy();
         }
 
         private void RecordInExcel()
@@ -83,10 +102,12 @@ namespace SITHelper
 
         private void ResetTitleContent()
         {
+            if(RTB_Title!=null && RTB_Content != null) {
             TextRange textRange1 = new TextRange(RTB_Title.Document.ContentStart, RTB_Title.Document.ContentEnd);
             LoadRTFFile(ref textRange1, ConfigContentFormat.TitleSavePath);
             TextRange textRange2 = new TextRange(RTB_Content.Document.ContentStart, RTB_Content.Document.ContentEnd);
             LoadRTFFile(ref textRange2, ConfigContentFormat.ContentSavePath);
+            }
         }
 
         private void LoadRTFFile(ref TextRange textRange, string path)
@@ -101,6 +122,29 @@ namespace SITHelper
                 }
             }
         }
+        #endregion
+
+        #region copyLog
+
+        private void StartCopy()
+        {
+            for (int i = 0; i < LogType.Children.Count; i++)
+            {               
+                CheckBox checkBox = (CheckBox)LogType.Children[i];
+
+                var find = from path in ConfigLogSave.logPaths
+                           where path.Name == checkBox.Name
+                           select path;
+                string sourcePath = find.ToList()[0].SourcePath;
+                string targetPath = find.ToList()[0].TargetPath;
+
+                if (checkBox.IsChecked == true)
+                {
+                    SaveLogFactory.GetInstance().CopyLog(sourcePath, targetPath);
+                }
+            }
+        }
+
         #endregion
 
 

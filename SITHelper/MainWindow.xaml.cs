@@ -130,6 +130,8 @@ namespace SITHelper
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "LVI_Record":
+                    uCRecord = null;
+                    uCRecord = new UserControlRecord();
                     GridMain.Children.Add(uCRecord);
                     break;
                 case "LVI_Setting":

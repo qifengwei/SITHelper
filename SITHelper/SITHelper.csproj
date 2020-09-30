@@ -75,11 +75,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Excel\Excel.csproj" />
+    <ProjectReference Include="..\SaveLog\SaveLog.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="FileSelector">
       <HintPath>..\dll\FileSelector.dll</HintPath>
+    </Reference>
+    <Reference Include="Utility.Tool.Controls">
+      <HintPath>dll\Utility.Tool.Controls.dll</HintPath>
     </Reference>
   </ItemGroup>
 
