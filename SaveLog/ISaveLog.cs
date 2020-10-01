@@ -6,6 +6,6 @@ namespace SaveLog
 {
     public interface ISaveLog
     {
-        public void CopyLog(string sourcePath, string targetPath, DateTime starttime, DateTime endTime);
+        public void CopyLog(string sourcePath, string targetPath, string zipName, in DateTime starttime, in DateTime endTime);
     }
 }

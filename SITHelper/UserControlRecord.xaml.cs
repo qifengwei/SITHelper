@@ -144,9 +144,11 @@ namespace SITHelper
 
                 string targetPath = System.IO.Path.Combine(WorkPath.DefalutWorkPath, title, find.ToList()[0].TargetPath);
 
+                string zipName = $"{find.ToList()[0].Name}.zip";
+
                 if (checkBox.IsChecked == true)
                 {
-                    SaveLogFactory.GetInstance().CopyLog(sourcePath, targetPath,startTime,endTime);
+                    SaveLogFactory.GetInstance().CopyLog(sourcePath, targetPath, zipName, startTime, endTime);
                 }
             }
         }
