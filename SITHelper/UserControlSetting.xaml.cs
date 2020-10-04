@@ -1,4 +1,5 @@
-﻿using SITHelper.Configuration;
+﻿using SITHelper.Binding;
+using SITHelper.Configuration;
 using SITHelper.Model;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,8 @@ namespace SITHelper
             Save_Location_Excel.IsEnabled = false;
             ConfigExcelFormat.TitleColumn = (char)CB_TitleColumn.SelectedItem;
             ConfigExcelFormat.ContentColumn = (char)CB_DescriptionColumn.SelectedItem;
+            UserControlRecordBinding.TitleToolTip = ConfigExcelFormat.TitleColumn.ToString();
+            UserControlRecordBinding.ContentToolTip = ConfigExcelFormat.ContentColumn.ToString();
             ConfigExcelFormat.Save();
             if (Save_Location_Excel_State != null) Save_Location_Excel_State.Visibility = Visibility.Visible;
         }

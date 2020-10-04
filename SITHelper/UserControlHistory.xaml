@@ -95,7 +95,7 @@
                     Grid.Column="3"
                     Grid.Row="1"
                     Content="Apply"
-                    IsEnabled="False" Click="Apply_Click"/>
+                    IsEnabled="False" Click="Apply_Click" Height="25" VerticalAlignment="Top"/>
 
         </Grid>
         

@@ -12,6 +12,8 @@ namespace Excel
 
         bool WriteInNextVacantRow(int ColumnTitle, int ColumnContents, string Title, string Contents);
 
-        void ReadHistory(int ColumnTitle, int ColumnContents, List<string>TitleList, List<string>ContentList);
+        bool ReadHistory(int ColumnTitle, int ColumnContents, List<string>TitleList, List<string>ContentList);
+
+        void SaveHistory(int ColumnTitle, int ColumnContents, List<string> TitleList, List<string> ContentList);
     }
 }

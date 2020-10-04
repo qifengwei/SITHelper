@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Linq;
 using SaveLog;
+using System.Diagnostics;
 
 namespace SITHelper
 {
@@ -153,8 +154,17 @@ namespace SITHelper
             }
         }
 
+
         #endregion
 
-
+        private void OpenWorkPath_Click(object sender, RoutedEventArgs e)
+        {
+            using (Process process = new Process())
+            {
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.FileName = WorkPath.DefalutWorkPath;
+                process.Start();
+            }
+        }
     }
 }

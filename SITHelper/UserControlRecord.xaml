@@ -11,6 +11,7 @@
              xmlns:m="clr-namespace:SITHelper.Model"
              xmlns:con="clr-namespace:Utility.Tool.Controls.View;assembly=Utility.Tool.Controls"
              xmlns:v="clr-namespace:SITHelper.Validation"
+             xmlns:b="clr-namespace:SITHelper.Binding"
              >
 
     <UserControl.Resources>
@@ -251,10 +252,9 @@
 
                 <RichTextBox.ToolTip>
 
-                    <ToolTip Style="{StaticResource RTB_Tooltips}">
-                        
-                        Title will be writen in column
-                        
+                    <ToolTip Style="{StaticResource RTB_Tooltips}"
+                             Content="{x:Static b:UserControlRecordBinding.TitleToolTip}">
+
                     </ToolTip>
                     
                 </RichTextBox.ToolTip>
@@ -274,9 +274,9 @@
 
                 <RichTextBox.ToolTip>
 
-                    <ToolTip Style="{StaticResource RTB_Tooltips}">
+                    <ToolTip Style="{StaticResource RTB_Tooltips}"
+                             Content="{x:Static b:UserControlRecordBinding.ContentToolTip}">
 
-                        Content will be writen in column
 
                     </ToolTip>
 
@@ -294,6 +294,17 @@
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Center"
                     >
+            
+            <!--Open Directory Button-->
+            <Button x:Name="OpenWorkPath"
+                    Style="{StaticResource Bt_Style}"
+                    Foreground="#B4B4B4"
+                    BorderBrush="#FFFFFF" Click="OpenWorkPath_Click">
+                
+                Open Workpath
+                
+            </Button>
+            
 
             <!--Refresh button-->
             <Button x:Name="RefreshContents"

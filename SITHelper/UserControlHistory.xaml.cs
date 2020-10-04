@@ -51,7 +51,17 @@ namespace SITHelper
 
         private void Apply_Click(object sender, RoutedEventArgs e)
         {
-
+#if DEBUG
+            List<string> titleList = new List<string>();
+            List<string> contentList = new List<string>();
+            foreach (var item in Histories)
+            {
+                titleList.Add(item.Title);
+                contentList.Add(item.Description);
+            }
+            IExcel excel = ExcelFactory.GetExcel();
+            excel.SaveHistory(CharToIntColumnName(ConfigExcelFormat.TitleColumn), CharToIntColumnName(ConfigExcelFormat.ContentColumn), titleList, contentList);
+#endif
         }
     }
 }

@@ -99,15 +99,47 @@ namespace Excel
             }
         }
 
-        public void ReadHistory(int columnTitle, int columnContents, List<string> titleList, List<string> contentList)
+        public bool ReadHistory(int columnTitle, int columnContents, List<string> titleList, List<string> contentList)
+        {
+            //List<string> contentList = new List<string>();
+            try
+            {
+                IWorkbook workbook = OpenWB();
+                ISheet worksheet = workbook.GetSheet(WorkSheetName);
+                for (int i = 1; i <= worksheet.LastRowNum; i++)
+                {
+                    titleList.Add(worksheet.GetRow(i).GetCell(columnTitle).StringCellValue);
+                    contentList.Add(worksheet.GetRow(i).GetCell(columnContents).StringCellValue);
+                }
+                return true;
+            }
+
+            catch(NullReferenceException)
+            {
+                return false;
+            }
+            
+        }
+
+        public void SaveHistory(int columnTitle, int columnContents, List<string> titleList, List<string> contentList)
         {
             //List<string> contentList = new List<string>();
             IWorkbook workbook = OpenWB();
             ISheet worksheet = workbook.GetSheet(WorkSheetName);
-            for(int i = 1; i<=worksheet.LastRowNum;i++)
+            DeleteAllOld(worksheet);
+            for (int i = 1; i <= ((titleList.Count<contentList.Count)?contentList.Count:titleList.Count); i++)
             {
-                titleList.Add(worksheet.GetRow(i).GetCell(columnTitle).StringCellValue);
-                contentList.Add(worksheet.GetRow(i).GetCell(columnContents).StringCellValue);
+                WriteInNPOINextVacantRow(columnTitle, columnContents, titleList[i-1], contentList[i-1], ref workbook);
+            }
+            SaveExcel(workbook);
+        }
+
+        private void DeleteAllOld(ISheet sheet)
+        {
+            for (int i = sheet.LastRowNum; i >= 1; i--)
+            {
+                IRow row = sheet.GetRow(i);
+                sheet.RemoveRow(row);
             }
         }
     }
